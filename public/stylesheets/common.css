@@ -1,3 +1,20 @@
-body p{
-    background-color:green;
-}
+*:focus {
+    outline: none;
+  }
+  
+  body {
+    font-family: Arial, ‘Sans-serif’;
+    background: black;
+  }
+
+  .main_container {
+    position: relative;
+    z-index: 1;
+    background: rgb(241, 196, 15);
+    max-width: 360px;
+    height: 600px;
+    margin: auto;
+    margin-top: 4%;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
