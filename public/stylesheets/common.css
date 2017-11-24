@@ -18,3 +18,28 @@
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   }
+
+
+  .menu_button_table
+  {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .menu_button_table td{
+    padding: 15px;
+  }
+
+  .menu_button_design {
+    border: none;
+    border-radius: 4px;
+
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 10em;
+
+    background-color: rgb(94, 94, 94);
+    width: 118px;
+    height: 160px;
+  }
