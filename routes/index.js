@@ -25,4 +25,8 @@ router.post('/login', function(req, res, next) {
   res.send(result);
 });
 
+router.get('/sign_up', function(req, res, next) {
+  res.send('sign up page');
+});
+
 module.exports = router;
