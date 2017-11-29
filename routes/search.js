@@ -7,7 +7,8 @@ var connection = new mysql(dbconf);
 
 
 router.get('/', function(req, res, next){
-    res.render('index_menu');
+    res.send('search select page');
+    //res.render('index_manu');
 });
 
 
