@@ -6,8 +6,8 @@ var dbconf = require('../configs/db_conf.js');
 var connection = new mysql(dbconf);
 
 router.get('/', function(req, res, next){
-    res.send('review page');
-    //res.render('html file name');
+    //res.send('review page');
+    res.render('facility_review');
 });
 
 
