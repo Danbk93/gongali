@@ -31,7 +31,7 @@
   #search_img
   {
     z-index: 2;
-    background: black;
+    background: url(../images/search_button.png) no-repeat;;
     width:30px;
     height:30px;
     position: absolute;
@@ -53,7 +53,7 @@
     border-radius:5px;
     border:2px solid #0f0124;
     background-color:none;
-    width:325px;
+    width:315px;
     height:30px;
     padding-left: 10px;
   }
