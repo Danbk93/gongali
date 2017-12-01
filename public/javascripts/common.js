@@ -26,3 +26,7 @@ var login = function(){
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(result));
 }
+
+var signUp = function(){
+    location.replace(location.origin + '/sign_up');
+}
