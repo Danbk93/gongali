@@ -21,3 +21,9 @@
   width: 80%;
   height: 160px;
 }
+
+#btn_logout{
+  width: 10%;
+  float: right;
+  margin-right: 5%;
+}
