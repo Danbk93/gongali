@@ -12,8 +12,8 @@ router.get('/location', function(req, res, next){
 });
 
 router.get('/keyword', function(req, res, next){
-    res.send('search keyword page');
-    //res.render('html file name');
+    //res.send('search keyword page');
+    res.render('keyword_search');
 });
 
 module.exports = router;
