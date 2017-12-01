@@ -21,7 +21,7 @@ router.post('/login', function (req, res, next) {
     req.session.upasswd = passwd;
   } else {
     result.result = 'false';
-  }ㄴ
+  }
   if (req.session.uid) {
     console.log('\n\t[LOGIN] user_id: ' + req.session.uid + '\n');
   }
