@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheets/common.css">
+  <link rel="stylesheet" href="stylesheets/keyword.css">
+  <link rel="stylesheet" href="stylesheets/header.css">
+  <title>공알이</title>
+  <script type="text/javascript">
+    var zoneDistrict = {
+        "서울특별시": ["강남구", "도봉구", "서초구"],
+        "경기도": ["안산시", "안양시 만안구", "안양시 동안구", "수원시"],
+        "인천광역시": ["부천시", "서구"]
+    }
+    
+    window.onload = function() {    
+        populateZone();
+    };
+    
+    function populateZone() {        
+        var zones = "<option>시/도 선택</option>";
+        var data = Object.keys(zoneDistrict); // get keys from zoneDistrict object
+        for (i=0; i < data.length; i++) {
+            zones += "<option>" + data[i] + "</option>";
+        }
+        document.getElementById("zone").innerHTML = zones;
+    }
+        
+    function populateDistrict(zone) {    
+        var districts = "<option>시/구 선택</option>";
+        var data = zoneDistrict[zone];
+        for (i=0; i < data.length; i++) {
+            districts += "<option>" + data[i] + "</option>";
+        }
+        document.getElementById("district").innerHTML = districts;
+    }
+</script>
+</head>
+
+<body>
+  <div class='main_container'>
+    
+    <div class='header'>
+      <button class='back_button_design' onclick="location.href=location.origin + '/main'"> </button>공공시설 조회</div>
+     <div class='select_design'>
+        <select id="zone" onchange="populateDistrict(this.value)">
+            <option>시/도 선택</option>
+        </select>
+        <select id="district">
+            <option>시/구 선택</option>
+        </select>
+     </div>
+    <div class='keyword_search'>
+        <input type='text' class='textfield' placeholder="키워드 입력">
+        <button class='search_button_design'></button>
+    </div>
+      
+  </div>
+</body>
+
+</html>
