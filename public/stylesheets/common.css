@@ -38,13 +38,22 @@
     width: 85%;
     padding-left: 15px;
   }
+  .signup_form .textfield{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ddd;
+    height: 50px;
+    width: 85%;
+    padding-left: 15px;
+  }
   
   .login_form .textfield:focus {
     border: 2px solid rgb(192, 57, 43);
     border-radius: 0px;
   }
   
-  .login_form .button_group {
+  .login_form .button_group,
+  .signup_form .button_group {
     margin-top: 10%;
   }
   
