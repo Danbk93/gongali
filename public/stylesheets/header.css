@@ -47,7 +47,7 @@
     right: 15px;
     top: 45px;
   }
-  input[type="text"]
+  #search_tb input[type="text"]
   {
     z-index: 2;
     border-radius:5px;
