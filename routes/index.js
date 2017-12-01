@@ -49,4 +49,10 @@ router.get('/sign_up', function (req, res, next) {
   res.render('sign_up');
 });
 
+router.post('/check_id', function(req, res, next){
+  var id = req.body.id;
+  var result = new Object();
+  var rows = db.query("SELECT * FROM user WHERE user_id =\'" + id + "\'");
+});
+
 module.exports = router;
