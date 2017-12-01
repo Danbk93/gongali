@@ -1,7 +1,7 @@
 .menu_button_table
 {
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  margin: auto;
 }
 
 .menu_button_table td{
@@ -18,6 +18,6 @@
   line-height: 10em;
 
   background-color: rgb(94, 94, 94);
-  width: 118px;
+  width: 80%;
   height: 160px;
 }

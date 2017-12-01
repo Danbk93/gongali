@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var db = require('db_handler.js');
+var db = require('./db_handler.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
