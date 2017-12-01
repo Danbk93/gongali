@@ -13,7 +13,7 @@ var login = function(){
         if (httpRequest.readyState == 4 && httpRequest.status == 200){
             var res = JSON.parse(httpRequest.responseText);
             if(res.result == 'true'){
-                alert('로그인 성공');
+                // alert('로그인 성공');
                 location.replace(location.origin + '/main');
             } else{
                 alert('일치하는 아이디와 패스워드가 없습니다.');
