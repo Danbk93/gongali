@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="stylesheets/common.css">
   <link rel="stylesheet" href="stylesheets/header.css">
+  <link rel="stylesheet" href="stylesheets/reservation_list_table.css">
   <title>공알이</title>
 </head>
 
@@ -14,11 +15,40 @@
   <div class='main_container'>
         <div class='header'>
           <button class='back_button_design' onclick="location.href=location.origin + '/main'"></button>
-          공공시설 조회          
+          공공시설 예약내역          
           <div id="search_img"></div>
           <div id="search_tb"><input type="text" name="search" placeholder="내용을 입력해주세요."></div>
         </div>
-        <br><br><br>공공시설 예약내역
+        <br><br><br>(사용자 아이디 들어갈 곳)<br><br>
+
+        <div style="overflow-x:auto;">
+          <table class='reservation_list_table'>
+            <tr>
+              <th>No.</th>
+              <th>공공시설명</th>
+              <th>대관시작</th>
+              <th>대관종료</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>park</td>
+              <td>1999.9.9</td>
+              <td>2000.1.1</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>school</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
 
     
       
