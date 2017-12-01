@@ -22,6 +22,10 @@
   height: 160px;
 }
 
+.menu_button_table button:hover {
+  background-color: rgb(140, 140, 140);
+}
+
 #btn_logout{
   width: 10%;
   float: right;
