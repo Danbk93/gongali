@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../stylesheets/common.css">
   <link rel="stylesheet" href="../stylesheets/header.css">
   <link rel="stylesheet" href="../stylesheets/list_table.css">
+  <link rel="stylesheet" href="../stylesheets/google_map.css">
   <title>공알이</title>
 </head>
 
@@ -17,6 +18,25 @@
           <button class='back_button_design' onclick="location.href=location.origin + '/main'"></button>
           공공시설 조회 (위치기반 조회)
         </div>
+
+        <h3>My Google Maps Demo</h3>
+        <div id="map"></div>
+        <script>
+          function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 4,
+              center: uluru
+            });
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+            });
+          }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1mwr6tW4z8fH7QZGhA4oeHTvmtWhlCkI&callback=initMap">
+        </script>
 
         
       
