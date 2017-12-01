@@ -1,0 +1,50 @@
+   .search_button_design {
+    background: url(../images/search_button.png) no-repeat;
+    position: absolute;
+    top: 135px;
+    right: 7px;
+    background-color: rgb(241, 196, 15);
+    border: none;
+    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  .keyword_search {
+    text-align: left;
+  }
+  
+  .keyword_search .textfield {
+    margin-top: 3%;
+    margin-left: 5%;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ddd;
+    height: 50px;
+    width: 75%;
+    padding-left: 15px;
+  }
+
+  .select_design{
+      text-align: left;
+      margin-left: 5%;
+      margin-top: 5%;
+      -webkit-appearance: none;
+  }
+
+  select{
+    width: 110px;
+    padding: .8em .5em;
+    font-family: inherit;
+    background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 0px;
+  }
+
+  .reslut_design{
+      margin-top: 3%;
+  }
