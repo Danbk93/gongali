@@ -7,8 +7,8 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/location', function(req, res, next){
-    res.send('search location page');
-    //res.render('html file name');
+    //res.send('search location page');
+    res.render('location_based_search');
 });
 
 router.get('/keyword', function(req, res, next){
