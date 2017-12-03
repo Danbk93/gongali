@@ -48,3 +48,26 @@
   .reslut_design{
       margin-top: 3%;
   }
+
+  .result_list_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 90%;
+    font-size: 14px;
+    background-color: #f2f2f2;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result_list_table th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+.result_list_table tr:nth-child(1) {
+    background-color: rgba(217, 223, 235, 0.87);
+}
+
+.result_list_table tr{
+    border: 1px solid rgba(165, 171, 172, 0.856);
+}
