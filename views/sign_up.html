@@ -13,7 +13,7 @@
   <div class='main_container'>
     <img src="/images/logo.png" alt="gongali_logo.png" style='margin:10% auto;' id='logo'>
     <form class='signup_form' id='signup_form' onSubmit="signUp();" autocomplete="off">
-      <input type="text" id='id' class='textfield' placeholder="아이디" required>
+      <input type="text" id='id' class='textfield' placeholder="아이디" required onchange="checkId();">
       <input type="password" id='passwd' class='textfield' placeholder="비밀번호" required>
       <input type="email" id='email' class='textfield' placeholder="이메일" required>
       <input type="text" id='p_number' class='textfield' placeholder="전화번호" required>

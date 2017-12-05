@@ -49,10 +49,40 @@ router.get('/sign_up', function (req, res, next) {
   res.render('sign_up');
 });
 
-router.post('/check_id', function(req, res, next){
+router.post('/sign_up', function (req, res, next) {
+  var result = new Object();
+
+  var id = req.body.id;
+  var passwd = req.body.passwd;
+  var email = req.body.email;
+  var phone_number = req.body.phone_number;
+
+  var rows = db.query("SELECT * FROM user WHERE user_id =\'" + id + "\'");
+  if (rows.length != 0) { // 이미 있는 아이디 요청
+    result.result = 'false';
+    result.error.stack = '이미 존재하는 아이디입니다.';
+  } else {
+    db.query("INSERT INTO user VALUES(\'" + id + " \', password(\'" + passwd + "\'), \'" + email + "\', \'" + phone_number + "\')");
+    result.result = 'true';
+  }
+
+  console.log('\n\t[SIGNUP] user_id: ' + id + '\n');
+
+  res.setHeader('Content-Type', 'application/json');
+  res.send(result);
+});
+
+router.post('/check_id', function (req, res, next) {
   var id = req.body.id;
   var result = new Object();
   var rows = db.query("SELECT * FROM user WHERE user_id =\'" + id + "\'");
+  if (rows.length == 0) {
+    result.result = 'true';
+  } else {
+    result.result = 'false';
+  }
+  res.setHeader('Content-Type', 'application/json');
+  res.send(result);
 });
 
 module.exports = router;

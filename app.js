@@ -31,7 +31,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
 app.use('/', index);
 app.use('/main', main);
 app.use('/search', search);
