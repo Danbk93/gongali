@@ -28,6 +28,7 @@ var keyword_searching = function(){
 var print_result = function(res){
     var districts ='';
     var length = res.length;
+    if(!length) districts = "<table class='result_list_table'><tr><th>찾는 결과가 없습니다</th></tr></table>";
     for(i = 0 ; i< length ; i++)
     {
         districts += "<table class='result_list_table'><tr><th>Type</th><th>내용</th></tr>";
