@@ -29,13 +29,15 @@ var get_info = function(){
 }
 
 var print_result = function(res){
-    console.log(res);
+    //console.log(res);
+    var close_day = print_closedDate(parseInt(res.closed_date, 16).toString(2));
+    console.log(close_day);
     var districts = "<table class='info_table'>";
     districts += "<tr><td>공공장소명: </td>" + "<td>"+ res.Pname +"</td></tr>";
     districts += "<tr><td>공공시설명: </td>" + "<td>"+ res.Fname +"</td></tr>";
     districts += "<tr><td>시설 유형: </td>" + "<td>"+ res.facility_type +"</td></tr>";  
     districts += "<tr><td>위치: </td>" + "<td>"+ res.Paddress +"</td></tr>";    
-    districts += "<tr><td>휴관일: </td>" + "<td>"+ parseInt(res.closed_date, 16).toString(2) +"</td></tr>";
+    districts += "<tr><td>휴관일: </td>" + "<td>"+ close_day +"</td></tr>";
     districts += "<tr><td>평일 운영 시간: </td>" + "<td>"+ res.opentime_weekday +" ~ "+res.closetime_weekday+ "</td></tr>"; 
     districts += "<tr><td>주말 운영 시간: </td>" + "<td>"+ res.opentime_weekend +" ~ "+res.closetime_weekend+ "</td></tr>";
     if(res.charged == 'Y') districts += "<tr><td>시간당 요금: </td>" + "<td>"+ res.base_charge_fee/res.base_usage_time + "</td></tr>"
@@ -48,4 +50,31 @@ var print_result = function(res){
     districts += "<tr><td>홈페이지: </td>" + "<td>"+ res.homepage + "</td></tr>"
     districts += "</table>"; 
     document.getElementById("info_detail").innerHTML = districts;
+}
+
+var print_closedDate = function(bn){
+    var result ="";
+    var day = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    var isclose = [0, 0, 0, 0, 0, 0, 0];
+    var isNoClose = 1;
+    for(i = 0; i < 7 ; i++) 
+    {
+        if(bn[i] == 1)
+        {
+            isclose[i] = 1;
+            isNoClose = 0;
+        } 
+    }
+    if(isNoClose) 
+    {
+        result += "없음";
+    }
+    else
+    {
+        for(j = 0; j < 7 ; j++)
+        {
+            if(isclose[j]) result += day[j] + " ";
+        }
+    }  
+    return result;  
 }
