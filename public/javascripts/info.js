@@ -22,6 +22,12 @@ function save() {
         document.getElementById('ca_passwd').value = '';
         document.getElementById('ca_passwd').focus();
         return;
+    } else if(b_passwd == a_passwd){
+        alert('현재 비밀번호와 같습니다.\n다시 입력해주세요.');
+        document.getElementById('a_passwd').value = '';
+        document.getElementById('ca_passwd').value = '';
+        document.getElementById('a_passwd').focus();
+        return;
     }
 
     var body = new Object();
@@ -66,6 +72,10 @@ function changePassword() {
 }
 
 function changeInfo() {
+    if(confirm('저장하시겠습니까?') == false){
+        location.reload();
+        return;
+    }
     var body = new Object();
     body.email = document.getElementById('email').value;
     body.phone_number = document.getElementById('phone').value;

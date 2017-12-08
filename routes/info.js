@@ -35,7 +35,7 @@ router.post('/',function(req,res,next){
 
 router.get('/change_password', function (req, res, next) {
     if (!req.session.uid) {
-        res.send('<script>alert("로그인 세션이 만료되었습니다. 로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
+        res.send('<script>alert("로그인 세션이 만료되었습니다. 로그인 화면으로 이동합니다."); opener.location.href = location.origin; window.close();</script>');
         return;
     }
     res.render('change_passwd');
