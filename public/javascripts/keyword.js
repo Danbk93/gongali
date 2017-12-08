@@ -33,7 +33,7 @@ var keyword_searching = function(){
 var call_detail = function(tab){
     sessionStorage.setItem('Pname',tab.getElementsByClassName('Pname')[0].childNodes[0].nodeValue);
     sessionStorage.setItem('Fname',tab.getElementsByClassName('Fname')[0].childNodes[0].nodeValue);
-    location.href = location.origin + '/detail_info';
+    location.href = location.origin + '/search/detail_info';
 }
 
 var print_result = function(res){
