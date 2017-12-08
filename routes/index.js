@@ -37,11 +37,11 @@ router.get('/logout', function (req, res, next) {
         console.log(err);
       } else {
         console.log('\n\t[LOGUT] user_id: ' + session.uid + '\n');
-        res.send('<script>alert("' + session.uid + '님 안녕히가세요."); location.replace(location.origin);</script>');
+        res.send('<script>alert("' + session.uid + '님, 로그아웃"); location.replace(location.origin);</script>');
       }
     });
   } else {
-    res.send('<script>alert("잘못된 접근입니다. 메인화면으로 갑니다."); location.replace(location.origin);</script>');
+    res.send('<script>alert("잘못된 접근입니다. 로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
   }
 });
 

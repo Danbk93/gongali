@@ -74,3 +74,10 @@
   #not_agree:hover {
     background-color: rgba(192, 55, 43, 0.712);
   }
+
+#username{
+  font-size:12px;
+  margin:0;
+  margin-right: 30px; 
+  text-align: right;
+}

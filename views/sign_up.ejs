@@ -12,11 +12,12 @@
 <body>
   <div class='main_container'>
     <img src="/images/logo.png" alt="gongali_logo.png" style='margin:10% auto;' id='logo'>
-    <form class='signup_form' id='signup_form' onSubmit="signUp();" autocomplete="off">
+    <form class='signup_form' id='signup_form' onSubmit="signUp(); return false;" autocomplete="off">
       <input type="text" id='id' class='textfield' placeholder="아이디" required onchange="checkId();">
-      <input type="password" id='passwd' class='textfield' placeholder="비밀번호" required>
+      <input type="password" id='passwd' class='textfield' placeholder="비밀번호" required onchange="checkPasswd();">
+      <input type="password" id='confirm_passwd' class='textfield' placeholder="비밀번호 확인" required style="margin-bottom:30px;" onchange="checkConfirmPassword();">
       <input type="email" id='email' class='textfield' placeholder="이메일" required>
-      <input type="text" id='p_number' class='textfield' placeholder="전화번호" required>
+      <input type="text" id='p_number' class='textfield' placeholder="전화번호" required onchange="checkPhoneNumber();">
       <div class="button_group">
           <input type='button' value='취소하기' onclick="goStartPage();">
           <input type='submit' form="signup_form" value='가입하기'>

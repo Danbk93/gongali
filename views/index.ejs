@@ -12,7 +12,7 @@
 <body>
   <div class='main_container'>
     <img src="images/logo.png" alt="7-talk_logo.png" style='margin-top:30%;' id='logo'>
-    <form class='login_form' id='login_form' onSubmit="login();" autocomplete="off">
+    <form class='login_form' id='login_form' onSubmit="login(); return false;" autocomplete="off">
       <input type="text" id='id' class='textfield' placeholder="아이디" required>
       <input type="password" id='passwd' class='textfield' placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required>
       <div class="button_group">

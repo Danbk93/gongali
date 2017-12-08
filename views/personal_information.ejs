@@ -13,40 +13,66 @@
 
 <body>
   <div class='main_container'>
-        <div class='header'>
-          <button class='back_button_design' onclick="location.href=location.origin + '/main'"> </button>
-          개인정보 수정
-        </div>
+    <div class='header'>
+      <button class='back_button_design' onclick="location.href=location.origin + '/main'"> </button>
+      개인정보 수정
+    </div>
 
-        <form class='personal_info_form' id='personal_info_form' onSubmit="login();" autocomplete="off">
-          <table>
-            <tr>
-              <td><label>아이디</label></td>
-              <td><input type="text" id='id' class='textfield' placeholder="Username" required></td>
-            </tr>
-            <tr>
-              <td><label>비밀번호</label></td>
-              <td><input type="password" id='passwd' class='textfield' placeholder="Password" required></td>
-            </tr>
-            <tr>
-              <td><label>이메일</label></td>
-              <td><input type="text" id='email' class='textfield' placeholder="E-mail" required></td>
-            </tr>
-            <tr>
-              <td><label>전화번호</label></td>
-              <td><input type="text" id='phone' class='textfield' placeholder="Phone number" required></td>
-            </tr>
-          </table>
-            <div class="button_group">
-                <!--저장하기 버튼 기능(onclick) 구현해야함-->
-                <input type='button' value='저장하기' onclick="">
-                <input type='button' value="취소" onclick="location.href=location.origin + '/main'">
-            </div>
-          </form>
-    
-      
+    <form class='personal_info_form' id='personal_info_form' onSubmit="return false;" autocomplete="off">
+      <table>
+        <tr>
+          <td>
+            <label>아이디</label>
+          </td>
+          <td>
+            <input type="text" id='id' class='textfield' required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>비밀번호</label>
+          </td>
+          <td>
+            <input type="button" id='passwd' required value='비밀번호 변경' onclick="changePassword();">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>이메일</label>
+          </td>
+          <td>
+            <input type="text" id='email' class='textfield' required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>전화번호</label>
+          </td>
+          <td>
+            <input type="text" id='phone' class='textfield' required>
+          </td>
+        </tr>
+      </table>
+      <div class="button_group">
+        <!--저장하기 버튼 기능(onclick) 구현해야함-->
+        <input type='button' value='저장하기' onclick="">
+      </div>
+    </form>
   </div>
-
 </body>
+<script>
+  var user_info = <%-user_info%>;
+  document.getElementById('id').value = user_info.user_id;
+  document.getElementById('email').value = user_info.email;
+  var temp = user_info.phone_number;
+  temp = temp.substring(0, 3) + "-" + temp.substring(3, 7) + "-" + temp.substring(7, 11);
+  document.getElementById('phone').value = temp;
+
+  function changePassword() {
+    window.open('/info/change_password', '비밀번호 변경',
+      'width=450, height=250, menubar=no, status=no, toolbar=no, location=no, scrollbars=no, resizable=no, fullscreen=no, left=550, top=250'
+    );
+  }
+</script>
 
 </html>

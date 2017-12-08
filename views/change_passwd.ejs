@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>비밀번호 변경</title>
+    <link rel="stylesheet" href="/stylesheets/personal_info_form.css">
+</head>
+
+<body style="background:#1b182e; color:white; text-align:center;">
+    <div>
+        <p style="margin:20px 20px 10px 20px;; font-size:30px;">비밀번호 변경</p>
+        <input type="button" class='info_type' disabled value='현재 비밀번호'>
+        <input type="password" class='info_content' id='b_passwd'>
+        <input type="button" class='info_type' disabled value='새로운 비밀번호'>
+        <input type="password" class='info_content' id='a_passwd'>
+        <input type="button" class='info_type' disabled value='비밀번호 확인'>
+        <input type="password" class='info_content' id='ca_passwd'>
+    </div>
+    <div style="margin-top:10px;">
+        <input type="button" class='btn_choose' value='취소하기' onclick="cancel();">
+        <input type="button" class='btn_choose' value='저장하기' onclick="save();">
+    </div>
+</body>
+    <script src='/javascripts/passwd.js'>
+    </script>
+</html>
