@@ -35,7 +35,7 @@ router.post('/search_keyword', function (req, res) {
   var district = result.district
   var keyword_input = result.keyword_input
 
-  var rows =  db.query("SELECT Fname , P.Pname , Paddress FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND Paddress LIKE \"%" + zone + "%\" AND Paddress LIKE \"%" + district + "%\" AND facility_type = \"%"+ keyword_input + "%\"");
+  var rows =  db.query("SELECT Fname , P.Pname , Paddress FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND Paddress LIKE \"%" + zone + "%\" AND Paddress LIKE \"%" + district + "%\" AND facility_type LIKE \"%"+ keyword_input + "%\"");
 
   var body = new Object();
   body.result = true;
