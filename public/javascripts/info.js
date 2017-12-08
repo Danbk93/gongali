@@ -90,7 +90,7 @@ function changeInfo() {
                 }
             }
         } else if (httpRequest.readyState == 4 && httpRequest.status != 200) {
-            alert('비밀번호 변경 실패...\n서버가 불안정합니다. 잠시후 시도해주시기 바랍니다.');
+            alert('개인정보 변경 실패...\n서버가 불안정합니다. 잠시후 시도해주시기 바랍니다.');
             window.close();
         }
     };
