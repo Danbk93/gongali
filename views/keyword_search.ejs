@@ -22,12 +22,12 @@
          "이천시","파주시","평택시","포천시","화성시"],
         "인천광역시": ["계양구","남구","남동구","동구","부평구","서구","연수구","중구"]
     }
-    
-    window.onload = function() {    
+
+    window.onload = function() {
         populateZone();
     };
-    
-    function populateZone() {        
+
+    function populateZone() {
         var zones = "<option>시/도 선택</option>";
         var data = Object.keys(zoneDistrict); // get keys from zoneDistrict object
         for (i=0; i < data.length; i++) {
@@ -35,8 +35,8 @@
         }
         document.getElementById("zone").innerHTML = zones;
     }
-        
-    function populateDistrict(zone) {    
+
+    function populateDistrict(zone) {
         var districts = "<option>시/구 선택</option>";
         var data = zoneDistrict[zone];
         for (i=0; i < data.length; i++) {
@@ -45,7 +45,7 @@
         document.getElementById("district").innerHTML = districts;
     }
 
-    function printResult() {    
+    function printResult() {
         var districts = "<tr><th>No.</th><th>공공기관명</th><th>공공시설명</th><th>위치</th></tr>";
         var data = 4;
         for(j = 0; j < 2; j++){
@@ -55,7 +55,9 @@
             }
             districts += "</tr>"
         }
+
         document.getElementById("KeyResult").innerHTML = districts;
+          console.log(document.getElementById("KeyResult").innerHTML)
     }
 
 </script>
@@ -63,7 +65,7 @@
 
 <body>
   <div class='main_container'>
-    
+
     <div class='header'>
       <button class='back_button_design' onclick="location.href=location.origin + '/search'"> </button>공공시설 조회</div>
      <div class='select_design'>
