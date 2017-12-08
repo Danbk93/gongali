@@ -1,0 +1,29 @@
+  .info_design{
+      margin-top: 3%;
+      overflow: auto;
+      height: 410px;
+  }
+
+  .info_table {
+    margin-top: 2%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 90%;
+    font-size: 14px;
+    background-color: #f2f2f2;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info_table th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+.info_table tr:nth-child(1) {
+    background-color: rgba(217, 223, 235, 0.87);
+}
+
+.info_table tr{
+    border: 1px solid rgba(165, 171, 172, 0.856);
+}
