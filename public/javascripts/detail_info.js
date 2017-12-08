@@ -40,8 +40,8 @@ var print_result = function(res){
     districts += "<tr><td>주말 운영 시간: </td>" + "<td>"+ res.opentime_weekend +" ~ "+res.closetime_weekend+ "</td></tr>";
     if(res.charged == 'Y') districts += "<tr><td>시간당 요금: </td>" + "<td>"+ res.base_charge_fee/res.base_usage_time + "</td></tr>"
     if(res.over_usage_time) districts += "<tr><td>시간당 초과요금: </td>" + "<td>"+ res.over_charge_fee + "</td></tr>"
-    //if(res.available_number.indexOf("없음") != -1) districts += "<tr><td>수용 가능 인원: </td>" + "<td>"+ res.available_number + "</td></tr>"
-    //if(res.other_info.indexOf("없음") != -1) districts += "<tr><td>시간당 초과요금: </td>" + "<td>"+ res.other_info + "</td></tr>"
+    if(res.available_number != "정보 없음") districts += "<tr><td>수용 가능 인원: </td>" + "<td>"+ res.available_number + "</td></tr>"
+    if(res.other_info != "정보 없음") districts += "<tr><td>시간당 초과요금: </td>" + "<td>"+ res.other_info + "</td></tr>"
     districts += "<tr><td>관리 기관명: </td>" + "<td>"+ res.manage_agency + "</td></tr>"
     districts += "<tr><td>관리 부서: </td>" + "<td>"+ res.department + "</td></tr>"
     districts += "<tr><td>전화 번호: </td>" + "<td>"+ res.phone_number + "</td></tr>"

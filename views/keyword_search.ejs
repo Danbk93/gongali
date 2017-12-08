@@ -46,6 +46,13 @@
         document.getElementById("district").innerHTML = districts;
     }
 
+    function PressEnter(e) {
+    if (e.which == 13 || e.keyCode == 13) {
+        keyword_searching();
+        return false;
+    }
+}
+
 </script>
 </head>
 
@@ -63,7 +70,7 @@
         </select>
      </div>
     <div class='keyword_search'>
-        <input type='text' class='textfield'  id='keyword_input' placeholder="시설 유형 입력">
+        <input type='text' class='textfield'  id='keyword_input' placeholder="시설 유형 입력" onkeypress="return PressEnter(event)" >
         <button class='search_button_design' onclick="keyword_searching();"></button>
     </div>
 
