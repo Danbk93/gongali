@@ -53,6 +53,9 @@ var print_result = function(res){
 }
 
 var goHomepage = function(homepage_url){
+    if(homepage_url.indexOf('http') != 0){
+        homepage_url = 'http://' + homepage_url;
+    }
     window.open(homepage_url,'homepage', null);
 }
 

@@ -18,6 +18,7 @@
 .info_table th, td {
     text-align: left;
     padding: 8px;
+    word-break: break-all;
 }
 
 .info_table tr:nth-child(1) {
