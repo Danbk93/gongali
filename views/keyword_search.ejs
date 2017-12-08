@@ -59,7 +59,6 @@
 
 <body>
     <div class='main_container'>
-
         <div class='header'>
             <button class='back_button_design' onclick="location.href=location.origin + '/search'"> </button>공공시설 조회</div>
         <div class='select_design'>
@@ -72,21 +71,6 @@
         </div>
         <div class='keyword_search'>
             <input type='text' class='textfield' id='keyword_input' placeholder="시설 유형 입력" onkeypress="return PressEnter(event)">
-            <button class='search_button_design' onclick="keyword_searching();"></button>
-        </div>
-
-        <div class='header'>
-            <button class='back_button_design' onclick="location.href=location.origin + '/search'"> </button>공공시설 조회</div>
-        <div class='select_design'>
-            <select id="zone" onchange="populateDistrict(this.value)">
-                <option>시/도 선택</option>
-            </select>
-            <select id="district">
-                <option>시/구 선택</option>
-            </select>
-        </div>
-        <div class='keyword_search'>
-            <input type='text' class='textfield' id='keyword_input' placeholder="시설 유형 입력">
             <a href='javascript:keyword_searching();' style="height:50px; display:inline;margin-left: 5%; vertical-align: middle;">
                 <img src="/images/search_button.png" class='search_button_design'>
             </a>
