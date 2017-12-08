@@ -22,6 +22,41 @@ function initMap() {
       my_position_marker.setPosition(pos);
       map.setCenter(pos);
 
+      /* 현재위치정보를 서버로 보내서 주변에 위치한 공공시설 정보를 받아오고 지도에 표시 */
+      var google_maps = function () {
+        var result = new Object();
+        result.latitude = pos.lat;
+        result.longitude = pos.lng;
+
+        var httpRequest;
+        if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
+          httpRequest = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { // IE 8 이상
+          httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        httpRequest.onreadystatechange = function () {
+          if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            var res = JSON.parse(httpRequest.responseText);
+            if (res.result == true) {
+              //alert(JSON.stringify(res.data));
+              alert(res.data[0].Fname);
+              alert(res.data[0].Paddress);
+              alert(res.data[0].latitude);
+              alert(res.data[0].longitude);
+            } else {
+              alert('fail');
+            }
+
+          }
+        };
+        httpRequest.open('POST', location.origin + '/search/search_location', true);
+        httpRequest.setRequestHeader("Content-type", "application/json");
+        httpRequest.send(JSON.stringify(result));
+      }
+
+      google_maps();
+      /* ********************************************************** */
+
     }, function () {
       handleLocationError(true, my_position_marker, map.getCenter());
     });
@@ -41,7 +76,7 @@ function initMap() {
 
   // Change this depending on the name of your PHP or XML file
   downloadUrl('../javascripts/testForGoogleMap.xml', function (data) {
-  //downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function (data) {
+    //downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function (data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     Array.prototype.forEach.call(markers, function (markerElem) {

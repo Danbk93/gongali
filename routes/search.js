@@ -50,7 +50,7 @@ router.post('/search_location', function (req, res) {
   var place_latitude = result.latitude;
   var place_longitude = result.longitude;
 
-  var rows =  db.query("SELECT Fname, Paddress, latitude, longitude FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND ( 6371 * acos( cos( radians(" + place_latitude + ") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(" + place_longitude + ") ) + sin( radians(" + place_latitude + ") ) * sin( radians( latitude ) ) ) ) < 100")
+  var rows =  db.query("SELECT Fname, Paddress, latitude, longitude FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND ( 6371 * acos( cos( radians(" + place_latitude + ") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(" + place_longitude + ") ) + sin( radians(" + place_latitude + ") ) * sin( radians( latitude ) ) ) ) < 10")
 
   var body = new Object();
   body.result = true;
