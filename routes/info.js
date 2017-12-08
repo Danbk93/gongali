@@ -18,7 +18,8 @@ router.post('/',function(req,res,next){
     var email = req.body.email;
     var phone_number = req.body.phone_number.split('-');
     phone_number = phone_number[0] + phone_number[1] + phone_number[2];
-    
+    var result = new Object();
+
     if (typeof req.session.uid == 'undefined') {
         result.result = 'false';
         result.error = new Object();
@@ -28,6 +29,8 @@ router.post('/',function(req,res,next){
         return;
     }
     db.query("UPDATE user SET email=\'" + email + "\', phone_number=\'" + phone_number + "\' WHERE user_id =\'" + req.session.uid + "\'");
+    result.result = 'true';
+    res.json(result);
 });
 
 router.get('/change_password', function (req, res, next) {
