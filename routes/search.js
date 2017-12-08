@@ -20,14 +20,20 @@ router.get('/keyword', function(req, res, next){
 });
 
 router.post('/search_keyword', function (req, res) {
+  var result = req.body;
 
+  var zone = result.zone
+  var district = result.district
+  var keyword_input = result.keyword_input
+
+  var rows =  db.query("SELECT Fname , P.Pname , Paddress FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND Paddress LIKE \"%" + zone + "%\" AND Paddress LIKE \"%" + district + "%\" AND facility_type = \""+ keyword_input + "\"");
   var body = new Object();
-  body.result =
-  var rows =  db.query("SELECT Fname , P.Pname , Paddress FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND Paddress LIKE "%%" AND Paddress LIKE "%%" AND facility_type = '' ");
+  body.result = true;
+  body.data = rows;
 
 
 
-  res.send(result);
+  res.send(body);
 });
 
 module.exports = router;
