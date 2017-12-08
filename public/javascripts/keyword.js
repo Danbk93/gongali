@@ -13,14 +13,14 @@ var keyword_searching = function(){
     httpRequest.onreadystatechange = function(){
         if (httpRequest.readyState == 4 && httpRequest.status == 200){
             var res = JSON.parse(httpRequest.responseText);
-            if(res.result == 'true'){
+            if(res.result == true){
                 print_result(res.data);
             } else{
                 alert('일치하는 키워드가 없습니다.');
             }
         }
     };
-    httpRequest.open('POST', location.origin + './search/search_keyword', true);
+    httpRequest.open('POST', location.origin + '/search/search_keyword', true);
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(result));
 }
@@ -33,7 +33,7 @@ var print_result = function(res){
         districts += "<table class='result_list_table'><tr><th>Type</th><th>내용</th></tr>";
         districts += "<tr><td>공공장소명</td>" + "<td>"+ res[i].Pname +"</td></tr>";
         districts += "<tr><td>공공시설명</td>" + "<td>"+ res[i].Fname +"</td></tr>";
-        districts += "<tr><td>위치</td>" + "<td>"+ res[i].address +"</td></tr>";    
+        districts += "<tr><td>위치</td>" + "<td>"+ res[i].Paddress +"</td></tr>";    
         districts += "</table>";
     }
     document.getElementById("KeyResult").innerHTML = districts;
