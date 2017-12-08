@@ -31,9 +31,9 @@ var print_result = function(res){
     for(i = 0 ; i< length ; i++)
     {
         districts += "<table class='result_list_table'><tr><th>Type</th><th>내용</th></tr>";
-        districts += "<tr><td>공공장소명</td>" + "<td>"+ res.Pname +"</td></tr>";
-        districts += "<tr><td>공공시설명</td>" + "<td>"+ res.Fname +"</td></tr>";
-        districts += "<tr><td>위치</td>" + "<td>"+ res.address +"</td></tr>";    
+        districts += "<tr><td>공공장소명</td>" + "<td>"+ res[i].Pname +"</td></tr>";
+        districts += "<tr><td>공공시설명</td>" + "<td>"+ res[i].Fname +"</td></tr>";
+        districts += "<tr><td>위치</td>" + "<td>"+ res[i].address +"</td></tr>";    
         districts += "</table>";
     }
     document.getElementById("KeyResult").innerHTML = districts;
