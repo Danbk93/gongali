@@ -47,9 +47,13 @@ var print_result = function(res){
     districts += "<tr><td>관리 기관명: </td>" + "<td>"+ res.manage_agency + "</td></tr>"
     districts += "<tr><td>관리 부서: </td>" + "<td>"+ res.department + "</td></tr>"
     districts += "<tr><td>전화 번호: </td>" + "<td>"+ res.phone_number + "</td></tr>"
-    districts += "<tr><td>홈페이지: </td>" + "<td>"+ res.homepage + "</td></tr>"
+    districts += "<tr><td>홈페이지: </td>" + "<td><a href=javascript:goHomepage(`" + res.homepage + "`);>"+ res.homepage + "</a></td></tr>"
     districts += "</table>"; 
     document.getElementById("info_detail").innerHTML = districts;
+}
+
+var goHomepage = function(homepage_url){
+    window.open(homepage_url,'homepage', null);
 }
 
 var print_closedDate = function(bn){
