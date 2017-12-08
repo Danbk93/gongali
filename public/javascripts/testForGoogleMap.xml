@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<markers>
+    <marker id="1" name="성남시청 모란관" address="경기도 성남시 중원구 성남대로 997" lat="37.419468" lng="127.125889" type="restaurant"/>
+    <marker id="2" name="탄천변 인조잔디구장" address="경기도 성남시 중원구 여수동 7-15" lat="37.425317" lng="127.119396" type="restaurant"/>
+    <marker id="3" name="모란야구장" address="경기도 성남시 중원구 여수동 7-15" lat="37.425317" lng="127.119396" type="bar"/>
+    <marker id="4" name="중원도서관 시청각실" address="경기도 성남시 중원구 원터로 17번길 46" lat="37.430211" lng="127.140117" type="bar"/>
+    <marker id="5" name="매탄공원" address="경기도 수원시 영통구 매탄로 185 (매탄동)" lat="37.267825" lng="127.045818" type="bar"/>
+    <marker id="6" name="수원시평생학습관 대강당" address="경기도 수원시 팔달구 월드컵로381번길 2 (우만동) 수원시평생학습관" lat="37.291344" lng="127.027996" type="bar"/>
+</markers>

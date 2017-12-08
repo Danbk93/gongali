@@ -1,12 +1,3 @@
-var customLabel = {
-  restaurant: {
-    label: 'R'
-  },
-  bar: {
-    label: 'B'
-  }
-};
-
 function initMap() {
   var init_pos = { lat: 37.250943, lng: 127.028344 };
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -30,7 +21,7 @@ function initMap() {
 
       my_position_marker.setPosition(pos);
       map.setCenter(pos);
-      map.Mark
+
     }, function () {
       handleLocationError(true, my_position_marker, map.getCenter());
     });
@@ -46,11 +37,11 @@ function initMap() {
       'Error: Your browser doesn\'t support geolocation.');
   }
 
-  /* --------------------- 아래는 구글맵에 MySQL 사용하기 구현 중 ---------------------- */
   var infoWindow = new google.maps.InfoWindow;
 
   // Change this depending on the name of your PHP or XML file
-  downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function (data) {
+  downloadUrl('../javascripts/testForGoogleMap.xml', function (data) {
+  //downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function (data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     Array.prototype.forEach.call(markers, function (markerElem) {
@@ -70,11 +61,9 @@ function initMap() {
       var text = document.createElement('text');
       text.textContent = address
       infowincontent.appendChild(text);
-      var icon = customLabel[type] || {};
       var marker = new google.maps.Marker({
         map: map,
         position: point,
-        label: icon.label
       });
       marker.addListener('click', function () {
         infoWindow.setContent(infowincontent);
