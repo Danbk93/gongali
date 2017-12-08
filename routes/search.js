@@ -4,17 +4,26 @@ var router = express.Router();
 var db = require('./db_handler.js');
 
 router.get('/', function(req, res, next){
-    //res.send('search select page');
+    if (!req.session.uid) {
+        res.send('<script>alert("로그인 세션이 만료되었습니다.\n로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
+        return;
+    }
     res.render('facility_search');
 });
 
 router.get('/location', function(req, res, next){
-    //res.send('search location page');
+    if (!req.session.uid) {
+        res.send('<script>alert("로그인 세션이 만료되었습니다.\n로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
+        return;
+    }
     res.render('location_based_search');
 });
 
 router.get('/keyword', function(req, res, next){
-    //res.send('search keyword page');
+    if (!req.session.uid) {
+        res.send('<script>alert("로그인 세션이 만료되었습니다.\n로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
+        return;
+    }
     res.render('keyword_search');
 
 });
