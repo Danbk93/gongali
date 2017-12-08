@@ -2,75 +2,78 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/stylesheets/common.css">
-  <link rel="stylesheet" href="/stylesheets/keyword.css">
-  <link rel="stylesheet" href="/stylesheets/header.css">
-  <title>공알이</title>
-  <script type="text/javascript">
-    var zoneDistrict = {
-        "시/도 선택" : ["시/구 선택"],
-        "서울특별시": ["강남구","강동구","강북구","강서구",
-         "관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","마포구","서대문구",
-         "서초구","성동구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"],
-        "경기도": ["가평군 가평읍","가평군 조종면","고양시 덕양구","고양시 일산동구","고양시 일산서구","과천시",
-         "광명시","구리시","군포시","남양주시 별내면","남양주시 오남읍","남양주시 와부읍","남양주시 진전읍",
-         "남양주시 화도읍","동두천시","부천시","성남시 분당구","성남시 수정구","성남시 중원구","수원시 권선구",
-         "수원시 영통구","수원시 장안구","수원시 팔달구","시흥시","안산시 단원구","안산시","안산시 상록구","안성시",
-         "안양시 동안구","안양시 만안구","양주시","양평군","여주시","연천군","오산시","용인시","의왕시","의정부시",
-         "이천시","파주시","평택시","포천시","화성시"],
-        "인천광역시": ["계양구","남구","남동구","동구","부평구","서구","연수구","중구"]
-    }
-
-    window.onload = function() {
-        populateZone();
-    };
-
-    function populateZone() {
-        var zones ="";
-        var data = Object.keys(zoneDistrict); // get keys from zoneDistrict object
-        for (i=0; i < data.length; i++) {
-            zones += "<option>" + data[i] + "</option>";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/keyword.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <title>공알이</title>
+    <script type="text/javascript">
+        var zoneDistrict = {
+            "시/도 선택": ["시/구 선택"],
+            "서울특별시": ["강남구", "강동구", "강북구", "강서구",
+                "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "마포구", "서대문구",
+                "서초구", "성동구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"
+            ],
+            "경기도": ["가평군 가평읍", "가평군 조종면", "고양시 덕양구", "고양시 일산동구", "고양시 일산서구", "과천시",
+                "광명시", "구리시", "군포시", "남양주시 별내면", "남양주시 오남읍", "남양주시 와부읍", "남양주시 진전읍",
+                "남양주시 화도읍", "동두천시", "부천시", "성남시 분당구", "성남시 수정구", "성남시 중원구", "수원시 권선구",
+                "수원시 영통구", "수원시 장안구", "수원시 팔달구", "시흥시", "안산시 단원구", "안산시", "안산시 상록구", "안성시",
+                "안양시 동안구", "안양시 만안구", "양주시", "양평군", "여주시", "연천군", "오산시", "용인시", "의왕시", "의정부시",
+                "이천시", "파주시", "평택시", "포천시", "화성시"
+            ],
+            "인천광역시": ["계양구", "남구", "남동구", "동구", "부평구", "서구", "연수구", "중구"]
         }
-        document.getElementById("zone").innerHTML = zones;
-    }
 
-    function populateDistrict(zone) {
-        var districts ="";
-        var data = zoneDistrict[zone];
-        for (i=0; i < data.length; i++) {
-            districts += "<option>" + data[i] + "</option>";
+        window.onload = function () {
+            populateZone();
+        };
+
+        function populateZone() {
+            var zones = "";
+            var data = Object.keys(zoneDistrict); // get keys from zoneDistrict object
+            for (i = 0; i < data.length; i++) {
+                zones += "<option>" + data[i] + "</option>";
+            }
+            document.getElementById("zone").innerHTML = zones;
         }
-        document.getElementById("district").innerHTML = districts;
-    }
 
-</script>
+        function populateDistrict(zone) {
+            var districts = "";
+            var data = zoneDistrict[zone];
+            for (i = 0; i < data.length; i++) {
+                districts += "<option>" + data[i] + "</option>";
+            }
+            document.getElementById("district").innerHTML = districts;
+        }
+    </script>
 </head>
 
 <body>
-  <div class='main_container'>
+    <div class='main_container'>
 
-    <div class='header'>
-      <button class='back_button_design' onclick="location.href=location.origin + '/search'"> </button>공공시설 조회</div>
-     <div class='select_design'>
-        <select id="zone" onchange="populateDistrict(this.value)">
-            <option>시/도 선택</option>
-        </select>
-        <select id="district">
-            <option>시/구 선택</option>
-        </select>
-     </div>
-    <div class='keyword_search'>
-        <input type='text' class='textfield'  id='keyword_input' placeholder="시설 유형 입력">
-        <button class='search_button_design' onclick="keyword_searching();"></button>
+        <div class='header'>
+            <button class='back_button_design' onclick="location.href=location.origin + '/search'"> </button>공공시설 조회</div>
+        <div class='select_design'>
+            <select id="zone" onchange="populateDistrict(this.value)">
+                <option>시/도 선택</option>
+            </select>
+            <select id="district">
+                <option>시/구 선택</option>
+            </select>
+        </div>
+        <div class='keyword_search'>
+            <input type='text' class='textfield' id='keyword_input' placeholder="시설 유형 입력">
+            <a href='javascript:keyword_searching();' style="height:50px; display:inline;margin-left: 5%; vertical-align: middle;">
+                <img src="/images/search_button.png" class='search_button_design'>
+            </a>
+        </div>
+        <hr style="width: 90%;">
+        <div class='result_design' id='KeyResult'>
+        </div>
     </div>
-
-    <div class='result_design' id='KeyResult'>
-    </div>
-  </div>
-  <script src="/javascripts/keyword.js"></script>
+    <script src="/javascripts/keyword.js"></script>
 </body>
 
 </html>

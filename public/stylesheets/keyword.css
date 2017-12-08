@@ -1,39 +1,35 @@
-   .search_button_design {
-    background: url(../images/search_button.png) no-repeat;
-    position: absolute;
-    top: 135px;
-    right: 7px;
-    background-color: rgb(241, 196, 15);
+.search_button_design {
+    margin:0;
+    padding:0;
     border: none;
-    border-radius: 4px;
-    width: 35px;
     height: 35px;
-  }
-  
-  .keyword_search {
-    text-align: left;
-  }
-  
-  .keyword_search .textfield {
-    margin-top: 3%;
-    margin-left: 5%;
+    vertical-align: middle;
+    padding-bottom: 2%;
+}
+
+.keyword_search {
+    text-align: center;
+    height:50px;
+    margin-top:5%;
+}
+
+.keyword_search .textfield {
     border-radius: 4px;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-color: #ddd;
-    height: 50px;
-    width: 75%;
+    height: 40px;
+    width: 60%;
     padding-left: 15px;
-  }
+    vertical-align: middle;
+}
 
-  .select_design{
-      text-align: left;
-      margin-left: 5%;
-      margin-top: 5%;
-      -webkit-appearance: none;
-  }
+.select_design {
+    text-align: center;
+    margin-top: 5%; 
+}
 
-  select{
+select {
     width: 110px;
     padding: .8em .5em;
     font-family: inherit;
@@ -43,15 +39,15 @@
     background-color: white;
     border: 1px solid #999;
     border-radius: 0px;
-  }
+}
 
-  .result_design{
-      margin-top: 3%;
-      overflow: auto;
-      height: 410px;
-  }
+.result_design {
+    margin-top: 3%;
+    overflow: auto;
+    height: 370px;
+}
 
-  .result_list_table {
+.result_list_table {
     margin-top: 2%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -62,7 +58,8 @@
     margin-right: auto;
 }
 
-.result_list_table th, td {
+.result_list_table th,
+td {
     text-align: left;
     padding: 8px;
 }
@@ -71,6 +68,22 @@
     background-color: rgba(217, 223, 235, 0.87);
 }
 
-.result_list_table tr{
+.result_list_table tr {
     border: 1px solid rgba(165, 171, 172, 0.856);
+}
+
+#zone,
+#district {
+    margin-top: 3%;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ddd;
+    height: 45px;
+    width: 40%;
+    padding-left: 15px;
+}
+
+#district{
+    margin-left: 5%;
 }
