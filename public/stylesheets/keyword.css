@@ -47,9 +47,12 @@
 
   .reslut_design{
       margin-top: 3%;
+      overflow: auto;
+      height: 150px;
   }
 
   .result_list_table {
+    margin-top: 2%;
     border-collapse: collapse;
     border-spacing: 0;
     width: 90%;
