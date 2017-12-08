@@ -45,19 +45,6 @@
         document.getElementById("district").innerHTML = districts;
     }
 
-    function printResult() {    
-        var districts = "<tr><th>No.</th><th>공공기관명</th><th>공공시설명</th><th>위치</th></tr>";
-        var data = 4;
-        for(j = 0; j < 2; j++){
-            districts += "<tr>"
-            for (i=0; i < data; i++) {
-                 districts += "<td>" + i + "</td>";
-            }
-            districts += "</tr>"
-        }
-        document.getElementById("KeyResult").innerHTML = districts;
-    }
-
 </script>
 </head>
 
@@ -75,14 +62,14 @@
         </select>
      </div>
     <div class='keyword_search'>
-        <input type='text' class='textfield' placeholder="키워드 입력">
-        <button class='search_button_design' onclick="printResult();"></button>
+        <input type='text' class='textfield'  id='keyword_input' placeholder="시설 유형 입력">
+        <button class='search_button_design' onclick="keyword_searching();"></button>
     </div>
 
-    <div class='reslut_design'>
-            <table class='result_list_table' id='KeyResult'></table>
+    <div class='reslut_design' id='KeyResult'>
     </div>
   </div>
+  <script src="javascripts/keyword.js"></script>
 </body>
 
 </html>
