@@ -41,12 +41,11 @@ function save() {
                 alert('비밀번호 변경 완료!');
                 window.close();
             } else if (json.result == 'false') {
-                if (json.error.code == 1){
+                if (json.error.code == 1) {
                     alert('유효하지 않은 접근입니다. 로그인 화면으로 돌아갑니다.');
                     opener.location.href = location.origin;
                     window.close();
-                }
-                else if (json.error.code == 2){
+                } else if (json.error.code == 2) {
                     alert('비밀번호 변경 실패...\n현재 비밀번호가 일치하지 않습니다. 다시 시도해주세요.');
                 }
             }
@@ -56,6 +55,46 @@ function save() {
         }
     };
     httpRequest.open('POST', location.origin + '/info/change_password', true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    httpRequest.send(JSON.stringify(body));
+}
+
+function changePassword() {
+    window.open('/info/change_password', '비밀번호 변경',
+        'width=450, height=250, menubar=no, status=no, toolbar=no, location=no, scrollbars=no, resizable=no, fullscreen=no, left=550, top=250'
+    );
+}
+
+function changeInfo() {
+    var body = new Object();
+    body.email = document.getElementById('email').value;
+    body.phone_number = document.getElementById('phone').value;
+
+    var httpRequest;
+    if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
+        httpRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE 8 이상
+        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            var json = JSON.parse(httpRequest.responseText);
+            if (json.result == 'true') {
+                alert('개인정보 변경 완료!');
+                location.reload();
+            } else if (json.result == 'false') {
+                if (json.error.code == 1) {
+                    alert('유효하지 않은 접근입니다. 로그인 화면으로 돌아갑니다.');
+                    opener.location.href = location.origin;
+                    window.close();
+                }
+            }
+        } else if (httpRequest.readyState == 4 && httpRequest.status != 200) {
+            alert('개인정보 변경 실패...\n서버가 불안정합니다. 잠시후 시도해주시기 바랍니다.');
+            window.close();
+        }
+    };
+    httpRequest.open('POST', location.origin + '/info', true);
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(body));
 }
