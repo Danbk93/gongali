@@ -11,6 +11,7 @@
   <title>공알이</title>
   <script type="text/javascript">
     var zoneDistrict = {
+        "시/도 선택" : ["시/구 선택"],
         "서울특별시": ["강남구","강동구","강북구","강서구",
          "관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","마포구","서대문구",
          "서초구","성동구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"],
@@ -28,7 +29,7 @@
     };
 
     function populateZone() {
-        var zones = "<option>시/도 선택</option>";
+        var zones ="";
         var data = Object.keys(zoneDistrict); // get keys from zoneDistrict object
         for (i=0; i < data.length; i++) {
             zones += "<option>" + data[i] + "</option>";
@@ -37,7 +38,7 @@
     }
 
     function populateDistrict(zone) {
-        var districts = "<option>시/구 선택</option>";
+        var districts ="";
         var data = zoneDistrict[zone];
         for (i=0; i < data.length; i++) {
             districts += "<option>" + data[i] + "</option>";

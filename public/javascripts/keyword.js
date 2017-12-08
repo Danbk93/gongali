@@ -4,6 +4,11 @@ var keyword_searching = function(){
     result.district = document.getElementById('district').value; 
     result.keyword_input = document.getElementById('keyword_input').value;
 
+    if(result.zone.indexOf("선택") != -1){
+        alert("시/도 선택을 해주세요");
+        return;
+    }
+
     var httpRequest;
     if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
         httpRequest = new XMLHttpRequest();
