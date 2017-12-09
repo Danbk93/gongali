@@ -18,6 +18,22 @@ router.get('/', function(req, res, next){
     res.render('reservation_' + page);
 });
 
+router.post('/available_reservation', function (req, res) {
+    var result = req.body;
+  
+    var facilityID = result.FID
+    var reserve_date = result.date
+  
+    var rows =  db.query("SELECT reservation_number, start_reservation_time, end_reservation_time FROM RESERVATION WHERE FID = " + facilityID + " AND reservation_date = " + reserve_date);
+  
+    var body = new Object();
+    body.result = true;
+    body.data = rows;
+  
+    res.send(body);
+  });
+
+
 
 router.get('/write_review', function(req, res, next){
     if (!req.session.uid) {
