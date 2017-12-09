@@ -104,8 +104,9 @@ function timeParsing(time) {
 }
 
 function goReservStep2(){
-        var selectedDay = document.getElementById("datepicker").value % 100;
-        var selectedMonth = (document.getElementById("datepicker").value / 100 ) % 100;
+        var selectedDate = document.getElementById("datepicker").value;
+        var selectedDay = selectedDate % 100;
+        var selectedMonth = ( selectedDate / 100 ) % 100;
         sessionStorage.setItem('selectedDate', selectedDate);
         var date = new Date();
         var temp_day = date.getDate();
