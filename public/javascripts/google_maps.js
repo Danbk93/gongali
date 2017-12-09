@@ -38,13 +38,40 @@ function initMap() {
           if (httpRequest.readyState == 4 && httpRequest.status == 200) {
             var res = JSON.parse(httpRequest.responseText);
             if (res.result == true) {
-              //alert(JSON.stringify(res.data));
-              alert(res.data[0].Fname);
-              alert(res.data[0].Paddress);
-              alert(res.data[0].latitude);
-              alert(res.data[0].longitude);
+              var infoWindow = new google.maps.InfoWindow();
+              for (var i = 0; i < res.data.length; i++) {
+
+                var name = res.data[i].Fname;
+                var address = res.data[i].Paddress;
+                var point = {
+                  lat: res.data[i].latitude,
+                  lng: res.data[i].longitude
+                }
+                
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: point,
+                });
+                
+                var infowincontent = document.createElement('div');
+                var strong = document.createElement('strong');
+                strong.textContent = name
+                infowincontent.appendChild(strong);
+                infowincontent.appendChild(document.createElement('br'));
+                var text = document.createElement('text');
+                text.textContent = address
+                infowincontent.appendChild(text);
+
+                google.maps.event.addListener(marker, 'click', (function (marker, infowincontent) {
+                  return function () {
+                    infoWindow.setContent(infowincontent);
+                    infoWindow.open(map, marker);
+                  }
+                })(marker, infowincontent));
+                
+              }
             } else {
-              alert('fail');
+              alert('error');
             }
 
           }
@@ -55,7 +82,7 @@ function initMap() {
       }
 
       google_maps();
-      /* ********************************************************** */
+      /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     }, function () {
       handleLocationError(true, my_position_marker, map.getCenter());
@@ -71,57 +98,4 @@ function initMap() {
       'Error: The Geolocation service failed.' :
       'Error: Your browser doesn\'t support geolocation.');
   }
-
-  var infoWindow = new google.maps.InfoWindow;
-
-  // Change this depending on the name of your PHP or XML file
-  downloadUrl('../javascripts/testForGoogleMap.xml', function (data) {
-    //downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function (data) {
-    var xml = data.responseXML;
-    var markers = xml.documentElement.getElementsByTagName('marker');
-    Array.prototype.forEach.call(markers, function (markerElem) {
-      var name = markerElem.getAttribute('name');
-      var address = markerElem.getAttribute('address');
-      var type = markerElem.getAttribute('type');
-      var point = new google.maps.LatLng(
-        parseFloat(markerElem.getAttribute('lat')),
-        parseFloat(markerElem.getAttribute('lng')));
-
-      var infowincontent = document.createElement('div');
-      var strong = document.createElement('strong');
-      strong.textContent = name
-      infowincontent.appendChild(strong);
-      infowincontent.appendChild(document.createElement('br'));
-
-      var text = document.createElement('text');
-      text.textContent = address
-      infowincontent.appendChild(text);
-      var marker = new google.maps.Marker({
-        map: map,
-        position: point,
-      });
-      marker.addListener('click', function () {
-        infoWindow.setContent(infowincontent);
-        infoWindow.open(map, marker);
-      });
-    });
-  });
 }
-
-function downloadUrl(url, callback) {
-  var request = window.ActiveXObject ?
-    new ActiveXObject('Microsoft.XMLHTTP') :
-    new XMLHttpRequest;
-
-  request.onreadystatechange = function () {
-    if (request.readyState == 4) {
-      request.onreadystatechange = doNothing;
-      callback(request, request.status);
-    }
-  };
-
-  request.open('GET', url, true);
-  request.send(null);
-}
-
-function doNothing() { }

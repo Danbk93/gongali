@@ -28,6 +28,15 @@ router.get('/keyword', function(req, res, next){
 
 });
 
+router.get('/detail_info', function(req, res, next){
+    if (!req.session.uid) {
+        res.send('<script>alert("로그인 세션이 만료되었습니다. 로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
+        return;
+    }
+    res.render('detail_info');
+
+});
+
 router.post('/search_keyword', function (req, res) {
   var result = req.body;
 
@@ -50,7 +59,7 @@ router.post('/search_location', function (req, res) {
   var place_latitude = result.latitude;
   var place_longitude = result.longitude;
 
-  var rows =  db.query("SELECT Fname, Paddress, latitude, longitude FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND ( 6371 * acos( cos( radians(" + place_latitude + ") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(" + place_longitude + ") ) + sin( radians(" + place_latitude + ") ) * sin( radians( latitude ) ) ) ) < 10")
+  var rows =  db.query("SELECT Fname, Paddress, latitude, longitude FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND ( 6371 * acos( cos( radians(" + place_latitude + ") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(" + place_longitude + ") ) + sin( radians(" + place_latitude + ") ) * sin( radians( latitude ) ) ) ) < 5")
 
   var body = new Object();
   body.result = true;

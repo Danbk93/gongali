@@ -13,13 +13,52 @@
 
 <body>
   <div class='main_container'>
-        <div class='header'>
-          <button class='back_button_design' onclick="location.href=location.origin + '/main'"></button>
-          공공시설 예약내역          
-          <div id="search_img"></div>
-          <div id="search_tb"><input type="text" name="search" placeholder="내용을 입력해주세요."></div>
-        </div>
-        <br><br><br>사용자이름 : <span><%-username%></span><br><br>
+    <div class='header'>
+      <button class='back_button_design' onclick="location.href=location.origin + '/main'"></button>
+      공공시설 예약내역
+      <div id="search_img"></div>
+      <div id="search_tb">
+        <input type="text" name="search" placeholder="내용을 입력해주세요.">
+      </div>
+    </div>
+    <div id='margin' style="display:none; height:50px;"></div>
+    <br>사용자이름 :
+    <span>
+      <%-username%>
+    </span>
+    <br>
+    <br>
+
+    <div style="overflow-x:auto;">
+      <table class='reservation_list_table'>
+        <tr>
+          <th>No.</th>
+          <th>공공시설명</th>
+          <th>대관시작</th>
+          <th>대관종료</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>park</td>
+          <td>1999.9.9</td>
+          <td>2000.1.1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>school</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <input type="button" value="리뷰">
+    </div>
+
 
         <div style="overflow-x:auto;">
           <table class='reservation_list_table'>
@@ -51,16 +90,19 @@
           <button id="review_button" onclick="write_review();">리뷰하기</button>
         </div>
 
-    
-      
   </div>
 
   <script src="javascripts/jquery-3.2.1.js"></script>
   <script>
-  jQuery(document).ready(function(){
-      jQuery("#search_img").click(function(){
-      jQuery("#search_tb").animate({width:'toggle'},"1000");
-      });
+    jQuery(document).ready(function () {
+      jQuery("#search_img").click(function () {
+        jQuery("#search_tb").animate({
+          width: 'toggle'
+        }, "1000");
+        if (jQuery('#margin').css('display') == 'block')
+          jQuery('#margin').css('display', 'none');
+        else
+          jQuery('#margin').css('display', 'block');
       });
 
   function write_review() {
