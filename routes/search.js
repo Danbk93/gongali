@@ -74,7 +74,7 @@ router.post('/search_more_info', function (req, res) {
   var facility = result.Fname;
   var place = result.Pname;
 
-  var rows =  db.query("SELECT P.Pname, Fname, facility_type, closed_date, opentime_weekday, closetime_weekday, opentime_weekend, closetime_weekend,charged,base_usage_time,base_charge_fee,over_usage_time, over_charge_fee, available_number, other_info, Paddress, manage_agency , department, phone_number, homepage FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND F.Pname = \"" + place + "\" AND Fname = \"" + facility+"\"")
+  var rows =  db.query("SELECT FID, P.Pname, Fname, facility_type, closed_date, opentime_weekday, closetime_weekday, opentime_weekend, closetime_weekend,charged,base_usage_time,base_charge_fee,over_usage_time, over_charge_fee, available_number, other_info, Paddress, manage_agency , department, phone_number, homepage FROM PUBLIC_PLACES as P, PUBLIC_FACILITIES as F WHERE P.Pname = F.Pname AND F.Pname = \"" + place + "\" AND Fname = \"" + facility+"\"")
 
   var body = new Object();
   body.result = true;

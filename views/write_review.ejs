@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="/stylesheets/header.css">
   <title>공알이</title>
 
-  <script type="text/javascript">
-
- 
-  </script>
+  <script src="/javascripts/review.js"> </script>
 </head>
 
 <body>
@@ -32,19 +29,19 @@
      <br>
      <br> 평점을 매겨주세요.
 
-     <select>
-        <option id="one">1점</option>
-        <option id="two">2점</option>
-        <option id="three" selected="selected" >3점</option>
-        <option id="four">4점</option>
-        <option id="five">5점</option>
+     <select id = "grade">
+        <option>1점</option>
+        <option>2점</option>
+        <option selected="selected" >3점</option>
+        <option>4점</option>
+        <option>5점</option>
 
     </select>
 
     <br>
      <br>
      // 상호작용 추가 예정
-     <button id="complete_button" onclick="location.href=location.origin + '/reservation/write_review'">작성 완료</button>
+     <button id="complete_button" onclick="save_review();">작성 완료</button>
      <button id="close_button" onclick="location.href=location.origin + '/reservation/list'">작성 취소</button>
 
   </div>
