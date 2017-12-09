@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="/stylesheets/common.css">
   <link rel="stylesheet" href="/stylesheets/header.css">
   <title>공알이</title>
+
+  <script type="text/javascript">
+
+ 
+  </script>
 </head>
 
 <body>
@@ -16,20 +21,29 @@
       <button class='back_button_design' onclick="location.href=location.origin + '/reservation/list'"></button>
       공공시설 리뷰 작성
     </div>
-    <div id='margin' style="display:none; height:50px;"></div>
     <br>
-
     <p id='username'><span style="color:brown; font-weight:700; font-size:14px;"><%-username%></span>님</p>
-
     <br> 공공시설명 들어갈 곳
     <br>
     <br>
-
-    <textarea id="textArea"  rows="25" cols="35" >
+    <textarea id="textArea"  rows="20" cols="35" >
         
      </textarea>
-
      <br>
+     <br> 평점을 매겨주세요.
+
+     <select>
+        <option id="one">1점</option>
+        <option id="two">2점</option>
+        <option id="three" selected="selected" >3점</option>
+        <option id="four">4점</option>
+        <option id="five">5점</option>
+
+    </select>
+
+    <br>
+     <br>
+     // 상호작용 추가 예정
      <button id="complete_button" onclick="location.href=location.origin + '/reservation/write_review'">작성 완료</button>
      <button id="close_button" onclick="location.href=location.origin + '/reservation/list'">작성 취소</button>
 
