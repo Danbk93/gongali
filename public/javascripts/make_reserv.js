@@ -19,7 +19,7 @@
                 return;
         }
         for (i = time.start; i <= time.end; i++) {
-                item += "<option>" + i + "시</option>";
+                item += "<option>" + i + "</option>";
         }       //각각 시설마다의 오픈시간과 클로즈시간 사이만 표시
         document.getElementById("starttime").innerHTML = item;
         document.getElementById("endtime").innerHTML = item;
