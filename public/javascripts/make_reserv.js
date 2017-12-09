@@ -41,7 +41,6 @@ var reservation = function () {
             if (res.result == true) {
                 if (isPossible(res.data)) {
                     save_reservation(res.reservation_number, result.FID); // 그 시간대에 예약이 없으면 예약 쿼리를 요청
-                    window.close();
                 } else {
                     alert('예약할 수 없습니다'); //그 시간대에 예약이 있음
                 }
@@ -51,16 +50,17 @@ var reservation = function () {
             }
         }
     };
-    httpRequest.open('POST', location.origin + '/search/search_more_info', true);
+    httpRequest.open('POST', location.origin + '/reservation/available_reservation', true);
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(result));
 }
 
 var save_reservation = function (res_no, fid) {
     var result = new Object();
-    result.user_id = 'id'; //id 어떻게 가져옴?
-    result.reservation_number = 1; //서버로부터 예약 가능한 번호 받아옴
-    result.FID = 1; //해당 공공시설의 FID
+    result.user_id = 'test'; //id 어떻게 가져옴?
+    result.reservation_number = res_no; //서버로부터 예약 가능한 번호 받아옴
+    result.FID = data.FID; //해당 공공시설의 FID
+    result.reservation_date = sessionStorage.getItem('selectedDate');
     result.start_reservation_time = sessionStorage.getItem('selectedStartTime'); //내가 예약하고자 하는 시간
     result.end_reservation_time = sessionStorage.getItem('selectedEndTime'); //내가 예약끝내고자 하는 시간
 
@@ -75,6 +75,7 @@ var save_reservation = function (res_no, fid) {
             var res = JSON.parse(httpRequest.responseText);
             if (res.result == true) {
                 alert('성공적으로 예약했습니다');
+                goReservStep4();
             } else {
                 alert('실패');
             }
@@ -108,9 +109,14 @@ function goReservStep2(){
         sessionStorage.setItem('selectedDate', selectedDate);
         var date = new Date();
         var temp_day = date.getDate();
-        if(selectedDate%100 - temp_day >= 3 || selectedDate%100 - temp_day < 0)
+        if(selectedDate%100 - temp_day >= 3)
         {
-                alert("최대 3일 이상 예약할 수 없습니다");
+                alert("최대 3일 이내에만 예약 할 수 있습니다");
+                return;
+        }
+        if(selectedDate%100 - temp_day <= 0)
+        {
+                alert("다음일부터 예약할 수 있습니다");
                 return;
         }
         //날짜 최대 3일 조건
@@ -126,6 +132,11 @@ function goReservStep3(){
                 alert("최대 3시간 이상 예약할 수 없습니다");
                 return;
         }  //최대 3시간 조건
+        if(select.endTime < select.startTime)
+        {
+                alert("종료 시간 선택 오류");
+                return;
+        }
         sessionStorage.setItem('selectedStartTime', select.startTime);
         sessionStorage.setItem('selectedEndTime', select.endTime);
         location.href=location.origin + '/reservation?page=3';

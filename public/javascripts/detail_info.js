@@ -40,8 +40,8 @@ var print_result = function (res) {
     districts += "<tr><td>휴관일: </td>" + "<td>" + close_day + "</td></tr>";
     districts += "<tr><td>평일 운영 시간: </td>" + "<td>" + res.opentime_weekday + " ~ " + res.closetime_weekday + "<td></tr>";
     districts += "<tr><td>주말 운영 시간: </td>" + "<td>" + res.opentime_weekend + " ~ " + res.closetime_weekend + "</td></tr>";
-    if (res.charged == 'Y') districts += "<tr><td>시간당 요금: </td>" + "<td>" + res.base_charge_fee / res.base_usage_time + "</td></tr>"
-    if (res.over_usage_time) districts += "<tr><td>시간당 초과요금: </td>" + "<td>" + res.over_charge_fee + "</td></tr>"
+    if (res.charged == 'Y') districts += "<tr><td>시간당 요금: </td>" + "<td>" + res.base_charge_fee / res.base_usage_time + "원</td></tr>"
+    if (res.over_usage_time) districts += "<tr><td>시간당 초과요금: </td>" + "<td>" + res.over_charge_fee + "원</td></tr>"
     if (res.available_number != "정보 없음") districts += "<tr><td>수용 가능 인원: </td>" + "<td>" + res.available_number + "</td></tr>"
     if (res.other_info != "정보 없음") districts += "<tr><td>기타 시설 정보: </td>" + "<td>" + res.other_info + "</td></tr>"
     districts += "<tr><td>관리 기관명: </td>" + "<td>" + res.manage_agency + "</td></tr>"
