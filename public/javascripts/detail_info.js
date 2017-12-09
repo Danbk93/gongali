@@ -35,7 +35,6 @@ var print_result = function(res){
     sessionStorage.setItem('opentime_weekend',res.opentime_weekend);
     sessionStorage.setItem('closetime_weekend',res.opentime_weekend);
     var close_day = print_closedDate(parseInt(res.closed_date, 16).toString(2));
-    console.log(close_day);
     var districts = "<table class='info_table'>";
     districts += "<tr><td>공공장소명: </td>" + "<td>"+ res.Pname +"</td></tr>";
     districts += "<tr><td>공공시설명: </td>" + "<td>"+ res.Fname +"</td></tr>";
@@ -92,7 +91,7 @@ var print_closedDate = function(bn){
 
 //이부분 수정필요
 function make_reservation(){
-    window.open('/info/change_password', '예약',
+    window.open('/search/reservation', '예약',
     'width=450, height=250, menubar=no, status=no, toolbar=no, location=no, scrollbars=no, resizable=no, fullscreen=no, left=550, top=250'
     );
 }

@@ -108,6 +108,6 @@ var isPossible = function(res) {
 function timeParsing(time)
 {
         var temp = "";
-        for(i = 0; i <=1 ; i++) temp[i] = time[i]; //시 부분만 파싱. 분, 초는 버림
+        for(i = 0; i <=1 ; i++) temp += time[i]; //시 부분만 파싱. 분, 초는 버림
         return parseInt(temp, 10);
 }
