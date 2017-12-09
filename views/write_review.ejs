@@ -13,20 +13,25 @@
 <body>
   <div class='main_container'>
     <div class='header'>
-      <button class='back_button_design' onclick="location.href=location.origin + '/main'"></button>
+      <button class='back_button_design' onclick="location.href=location.origin + '/reservation/list'"></button>
       공공시설 리뷰 작성
-      <div id="search_img"></div>
-      <div id="search_tb">
-        <input type="text" name="search" placeholder="내용을 입력해주세요.">
-      </div>
     </div>
     <div id='margin' style="display:none; height:50px;"></div>
-    <br>사용자이름 :
-    <span>
-      <%-username%>
-    </span>
-  
+    <br>
 
+    <p id='username'><span style="color:brown; font-weight:700; font-size:14px;"><%-username%></span>님</p>
+
+    <br> 공공시설명 들어갈 곳
+    <br>
+    <br>
+
+    <textarea id="textArea"  rows="25" cols="35" >
+        
+     </textarea>
+
+     <br>
+     <button id="complete_button" onclick="location.href=location.origin + '/reservation/write_review'">작성 완료</button>
+     <button id="close_button" onclick="location.href=location.origin + '/reservation/list'">작성 취소</button>
 
   </div>
 
