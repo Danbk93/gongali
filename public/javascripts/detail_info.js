@@ -84,7 +84,7 @@ var print_closedDate = function (bn) {
 
 //이부분 수정필요
 function make_reservation() {
-    window.open('/reservation', '예약',
+    window.open('/reservation?page=1', '예약',
         'width=450, height=350, menubar=no, status=no, toolbar=no, location=no, scrollbars=no, resizable=no, fullscreen=no, left=550, top=150'
     );
 }
