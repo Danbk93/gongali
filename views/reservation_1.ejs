@@ -7,20 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>공알이</title>
     <link rel="stylesheet" href="/stylesheets/reservation.css">
-    <link rel="stylesheet" href="/stylesheets/Calendarstyle.css">
-    <script src='/javascripts/Calendarscript.js'></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <script>
-    window.onload = function () {
-            document.getElementById("info_container").innerHTML = "<p>공공 시설명: " + data.Fname + "</p>";
-            kCalendar('kCalendar');
-        };
+    $(function() {
+    $( "#datepicker" ).datepicker(
+    {
+            dateFormat:    'yymmdd'
+    }
+     
+    );
+    });
     </script>
 </head>
 
 <body style="background:#1b182e; color:white; text-align:center;">
     <p style="margin:20px 20px 10px 20px;; font-size:30px;">공공시설 대관 예약_1</p>
     <div id='info_container'></div>
-    <div id="kCalendar" style="text-align:center;"></div>
+    <p>Date: <input type="text" id="datepicker"></p>
     </div>
     <div style="margin-top:15px;">
         <input type="button" class='btn_choose' value='취소하기' onclick="cancel();">

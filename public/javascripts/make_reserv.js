@@ -104,6 +104,15 @@ function timeParsing(time) {
 }
 
 function goReservStep2(){
+        var selectedDate = document.getElementById("datepicker").value;
+        sessionStorage.setItem('selectedDate', selectedDate);
+        var date = new Date();
+        var temp_day = date.getDate();
+        if(selectedDate%100 - temp_day >= 3 || selectedDate%100 - temp_day < 0)
+        {
+                alert("최대 3일 이상 예약할 수 없습니다");
+                return;
+        }
         //날짜 최대 3일 조건
         location.href=location.origin + '/reservation?page=2';
 }
