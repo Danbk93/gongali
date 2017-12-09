@@ -1,0 +1,23 @@
+ select {
+    width: 110px;
+    padding: .8em .5em;
+    font-family: inherit;
+    background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 0px;
+}
+
+  .btn_choose{
+    padding: 5px 0;
+    margin-left: 1%;
+    width: 40%;
+    background: #ffd146;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffd146;
+    color: black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }

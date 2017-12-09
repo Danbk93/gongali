@@ -28,3 +28,11 @@
 .info_table tr{
     border: 1px solid rgba(165, 171, 172, 0.856);
 }
+
+.resv_button{
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>예약</title>
+    <link rel="stylesheet" href="/stylesheets/reservation.css">
+</head>
+
+<body style="background:#1b182e; color:white; text-align:center;">
+    <div style="margin-top:1px;">
+        <select id="daytype" onchange="setTimerange(this.value)">
+            <option>유형 선택</option>
+            <option>주일</option>
+            <option>주말</option>
+        </select>
+        <select id="starttime">
+            <option>시작시간 선택</option>
+        </select>
+        <select id="endtime">
+            <option>종료시간 선택</option>
+        </select>
+    </div>
+    <div style="margin-top:15px;">
+        <input type="button" class='btn_choose' value='취소하기' onclick="cancel();">
+        <input type="button" class='btn_choose' value='예약하기' onclick="reservation();">
+    </div>
+</body>
+<script src='/javascripts/make_reserv.js'>
+</script>
+
+</html>
