@@ -11,7 +11,7 @@ router.get('/list', function(req, res, next){
 
 router.get('/', function(req, res, next){
     if (!req.session.uid) {
-        res.send('<script>alert("로그인 세션이 만료되었습니다. 로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
+        res.send('<script>alert("로그인 세션이 만료되었습니다. 로그인 화면으로 이동합니다."); opener.location.href = location.origin; window.close();</script>');
         return;
     }
     var page = req.query.page;
@@ -24,7 +24,7 @@ router.post('/available_reservation', function (req, res) {
     var facilityID = result.FID
     var reserve_date = result.date
   
-    var rows =  db.query("SELECT reservation_number, start_reservation_time, end_reservation_time FROM RESERVATION WHERE FID = " + facilityID + " AND reservation_date = " + reserve_date);
+    var rows =  db.query("SELECT reservation_number, start_reservation_time, end_reservation_time FROM RESERVATION WHERE FID = \'" + facilityID + "\' AND reservation_date = \'" + reserve_date + "\'");
   
     var body = new Object();
     body.result = true;
