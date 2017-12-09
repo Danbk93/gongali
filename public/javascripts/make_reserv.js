@@ -127,8 +127,8 @@ function goReservStep2(){
 
 function goReservStep3(){
         var select = new Object();
-        select.startTime = document.getElementById('starttime').value;
-        select.endTime = document.getElementById('endtime').value;
+        select.startTime = parseInt(document.getElementById('starttime').value);
+        select.endTime = parseInt(document.getElementById('endtime').value);
         if(select.endTime - select.startTime > 3)
         {
                 alert("최대 3시간 이상 예약할 수 없습니다");

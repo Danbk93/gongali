@@ -24,6 +24,8 @@ router.post('/available_reservation', function (req, res) {
     var facilityID = result.FID
     var reserve_date = result.date
   
+    console.log(JSON.stringify(result));
+
     var rows =  db.query("SELECT reservation_number, start_reservation_time, end_reservation_time FROM RESERVATION WHERE FID = \'" + facilityID + "\' AND reservation_date = \'" + reserve_date + "\'");
   
     var body = new Object();
