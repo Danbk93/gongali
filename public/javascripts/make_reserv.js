@@ -44,7 +44,6 @@ var reservation = function () {
                 } else {
                     alert('예약할 수 없습니다'); //그 시간대에 예약이 있음
                 }
-
             } else {
                 alert('실패');
             }
