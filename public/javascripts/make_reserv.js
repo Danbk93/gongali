@@ -104,16 +104,18 @@ function timeParsing(time) {
 }
 
 function goReservStep2(){
-        var selectedDate = document.getElementById("datepicker").value;
+        var selectedDay = document.getElementById("datepicker").value % 100;
+        var selectedMonth = (document.getElementById("datepicker").value / 100 ) % 100;
         sessionStorage.setItem('selectedDate', selectedDate);
         var date = new Date();
         var temp_day = date.getDate();
-        if(selectedDate%100 - temp_day >= 3)
+        if(date.getMonth() != selectedMonth) selectedDay += temp_day;//월이 넘어가면
+        if(selectedDay- temp_day >= 3)
         {
                 alert("최대 3일 이내에만 예약 할 수 있습니다");
                 return;
         }
-        if(selectedDate%100 - temp_day <= 0)
+        if(selectedDay- temp_day <= 0)
         {
                 alert("다음일부터 예약할 수 있습니다");
                 return;
