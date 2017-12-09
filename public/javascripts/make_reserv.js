@@ -1,7 +1,8 @@
 var data = JSON.parse(sessionStorage.getItem('data'));
 
 function setTimerange(daytype) {
-    var item = "";
+    var open = "<option>시작시간 선택</option>";
+    var close = "<option>종료시간 선택</option>";
     var time = new Object();
     if (daytype == '평일') {
         time.start = timeParsing(data.opentime_weekday);
@@ -9,17 +10,13 @@ function setTimerange(daytype) {
     } else if (daytype == '주말') {
         time.start = timeParsing(data.opentime_weekend);
         time.end = timeParsing(data.closetime_weekend);
-    } else {
-        item += "<option>" + "유형 선택 필요" + "</option>";
-        document.getElementById("starttime").innerHTML = item;
-        document.getElementById("endtime").innerHTML = item;
-        return;
-    }
+    } 
     for (i = time.start; i <= time.end; i++) {
-        item += "<option>" + i + "시</option>";
+        open += "<option>" + i + "</option>";
+        close += "<option>" + i + "</option>";
     } //각각 시설마다의 오픈시간과 클로즈시간 사이만 표시
-    document.getElementById("starttime").innerHTML = item;
-    document.getElementById("endtime").innerHTML = item;
+    document.getElementById("starttime").innerHTML = open;
+    document.getElementById("endtime").innerHTML = close;
 }
 
 function cancel() {
@@ -29,7 +26,8 @@ function cancel() {
 
 var reservation = function () {
     var result = new Object();
-    result.FID = sessionStorage.getItem('FID');
+    result.FID = data.FID;      //내가 지정한 공공 장소에
+    result.date = sessionStorage.getItem('selectedDate');       //내가 선택한 날짜에
 
     var httpRequest;
     if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
@@ -63,8 +61,8 @@ var save_reservation = function (res_no, fid) {
     result.user_id = 'id'; //id 어떻게 가져옴?
     result.reservation_number = 1; //서버로부터 예약 가능한 번호 받아옴
     result.FID = 1; //해당 공공시설의 FID
-    result.start_reservation_time = document.getElementById('starttime').value; //내가 예약하고자 하는 시간
-    result.end_reservation_time = document.getElementById('endtime').value; //내가 예약끝내고자 하는 시간
+    result.start_reservation_time = sessionStorage.getItem('selectedStartTime'); //내가 예약하고자 하는 시간
+    result.end_reservation_time = sessionStorage.getItem('selectedEndTime'); //내가 예약끝내고자 하는 시간
 
     var httpRequest;
     if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
@@ -89,10 +87,9 @@ var save_reservation = function (res_no, fid) {
 
 var isPossible = function (res) {
     length = res.length;
-    var temp = new Object;
     var myTime = new Object();
-    myTime.start = document.getElementById('starttime').value;
-    myTime.end = document.getElementById('endtime').value;
+    myTime.start = sessionStorage.getItem('selectedStartTime');
+    myTime.end = sessionStorage.getItem('selectedEndTime');
     for (i = 0; i < length; i++) {
         if (res[i].start_reservation_time < myTime.start && res[i].end_reservation_time > myTime.end) return false;
         if (res[i].start_reservation_time > myTime.start && res[i].end_reservation_time < myTime.end) return false;
@@ -104,4 +101,27 @@ function timeParsing(time) {
     var temp = "";
     for (i = 0; i <= 1; i++) temp += time[i]; //시 부분만 파싱. 분, 초는 버림
     return parseInt(temp, 10);
+}
+
+function goReservStep2(){
+        //날짜 최대 3일 조건
+        location.href=location.origin + '/reservation?page=2';
+}
+
+function goReservStep3(){
+        var select = new Object();
+        select.startTime = document.getElementById('starttime').value;
+        select.endTime = document.getElementById('endtime').value;
+        if(select.endTime - select.startTime > 3)
+        {
+                alert("최대 3시간 이상 예약할 수 없습니다");
+                return;
+        }  //최대 3시간 조건
+        sessionStorage.setItem('selectedStartTime', select.startTime);
+        sessionStorage.setItem('selectedEndTime', select.endTime);
+        location.href=location.origin + '/reservation?page=3';
+}
+
+function goReservStep4(){
+        location.href=location.origin + '/reservation?page=4';
 }
