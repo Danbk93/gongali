@@ -29,7 +29,7 @@ router.post('/available_reservation', function (req, res) {
     var reserve_date = result.date
     //reserve_date = reserve_date.substring(0,4) + "-" + reserve_date.substring(4,6) + "-" + reserve_date.substring(6)
     var rows = db.query("SELECT reservation_number, start_reservation_time, end_reservation_time FROM RESERVATION WHERE FID = " + facilityID + " AND reservation_date = " + reserve_date);
-
+ 
     var body = new Object();
     body.result = true;
     body.data = rows;
