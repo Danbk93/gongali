@@ -91,6 +91,8 @@ var isPossible = function (res) {
     for (i = 0; i < length; i++) {
         if (res[i].start_reservation_time <= myTime.start && res[i].end_reservation_time >= myTime.end) return false;
         if (res[i].start_reservation_time >= myTime.start && res[i].end_reservation_time <= myTime.end) return false;
+        if (res[i].start_reservation_time <= myTime.start && myTime.start <= res[i].end_reservation_time) return false;
+        if (res[i].start_reservation_time <= myTime.end && myTime.end <= res[i].end_reservation_time) return false;
     } //예약이 차있는지 확인, 시간비교 필요
     return true;
 }
