@@ -29,4 +29,6 @@ function save_review(){
     httpRequest.open('POST', location.origin + '/review/add_review', true);
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(result));
+
+    location.href= location.origin + '/reservation/list';
 }
