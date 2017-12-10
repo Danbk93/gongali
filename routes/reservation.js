@@ -37,6 +37,25 @@ router.post('/available_reservation', function (req, res) {
     res.json(body);
 });
 
+router.post('/add_reservation', function (req, res) {
+    var result = req.body;
+
+    var id = req.session.uid;
+    var res_num = result.reservation_number;
+    var FID = result.FID;
+    var res_date = result.reservation_date;
+    var res_start = result.start_reservation_time;
+    var res_end = result.end_reservation_time;
+
+    var rows = db.query("INSERT INTO RESERVATION VALUES(\"" + id + " \", " + res_num + ", " + FID + ", " + res_start + ", " + res_end + ", " + res_date + ")");
+
+    var body = new Object();
+    body.result = true;
+    body.data = rows;
+
+    res.json(body.result);
+});
+
 
 
 
