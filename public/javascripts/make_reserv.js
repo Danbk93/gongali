@@ -86,11 +86,11 @@ var save_reservation = function () {
 var isPossible = function (res) {
     length = res.length;
     var myTime = new Object();
-    myTime.start = sessionStorage.getItem('selectedStartTime');
-    myTime.end = sessionStorage.getItem('selectedEndTime');
+    myTime.start = parseInt(sessionStorage.getItem('selectedStartTime'));
+    myTime.end = parseInt(sessionStorage.getItem('selectedEndTime'));
     for (i = 0; i < length; i++) {
-        if (res[i].start_reservation_time < myTime.start && res[i].end_reservation_time > myTime.end) return false;
-        if (res[i].start_reservation_time > myTime.start && res[i].end_reservation_time < myTime.end) return false;
+        if (res[i].start_reservation_time <= myTime.start && res[i].end_reservation_time >= myTime.end) return false;
+        if (res[i].start_reservation_time >= myTime.start && res[i].end_reservation_time <= myTime.end) return false;
     } //예약이 차있는지 확인, 시간비교 필요
     return true;
 }
