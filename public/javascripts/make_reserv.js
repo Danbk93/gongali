@@ -40,7 +40,7 @@ var reservation = function () {
             var res = JSON.parse(httpRequest.responseText);
             if (res.result == true) {
                 if (isPossible(res.data)) {
-                    save_reservation(res.reservation_number, result.FID); // 그 시간대에 예약이 없으면 예약 쿼리를 요청
+                    save_reservation(); // 그 시간대에 예약이 없으면 예약 쿼리를 요청
                 } else {
                     alert('예약할 수 없습니다'); //그 시간대에 예약이 있음
                 }
@@ -54,10 +54,8 @@ var reservation = function () {
     httpRequest.send(JSON.stringify(result));
 }
 
-var save_reservation = function (res_no, fid) {
+var save_reservation = function () {
     var result = new Object();
-    result.user_id = 'test'; //id 어떻게 가져옴?
-    result.reservation_number = res_no; //서버로부터 예약 가능한 번호 받아옴
     result.FID = data.FID; //해당 공공시설의 FID
     result.reservation_date = sessionStorage.getItem('selectedDate');
     result.start_reservation_time = sessionStorage.getItem('selectedStartTime'); //내가 예약하고자 하는 시간
@@ -80,7 +78,7 @@ var save_reservation = function (res_no, fid) {
             }
         }
     };
-    httpRequest.open('POST', location.origin + '/search/search_more_info', true);
+    httpRequest.open('POST', location.origin + '/reservation/add_reservation', true);
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(result));
 }
@@ -129,6 +127,16 @@ function goReservStep3(){
         var select = new Object();
         select.startTime = parseInt(document.getElementById('starttime').value);
         select.endTime = parseInt(document.getElementById('endtime').value);
+        var regNumber = /^[0-9]*$/;
+        if(!regNumber.test(select.startTime) || !regNumber.test(select.endTime)) {
+                alert('시간을 선택해주세요');
+                return;
+        }
+        if(select.startTime == select.endTime)
+        {
+                alert("시작시간과 종료시간을 다르게 선택해주세요");
+                return;
+        }
         if(select.endTime - select.startTime > 3)
         {
                 alert("최대 3시간 이상 예약할 수 없습니다");

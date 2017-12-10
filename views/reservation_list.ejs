@@ -23,40 +23,14 @@
     </div>
     <div id='margin' style="display:none; height:50px;"></div>
     <br>
-    <p id='username'><span style="color:brown; font-weight:700; font-size:14px;"><%-username%></span>님의 예약 내역 입니다.</p>
-    <br>
-    <br>
-
-        <div style="overflow-x:auto;">
-          <table class='reservation_list_table'>
-            <tr>
-              <th>No.</th>
-              <th>공공시설명</th>
-              <th>대관시작</th>
-              <th>대관종료</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>park</td>
-              <td>1999.9.9</td>
-              <td>2000.1.1</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>school</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
-          <button id="review_button" onclick="location.href=location.origin + '/reservation/write_review'">리뷰하기</button>
-        </div>
-
+    <p id='username'>
+      <span style="color:brown; font-weight:700; font-size:14px;">
+        <%-username%>
+      </span>님의 예약 내역
+    </p>
+    <div id='reservation_list' style="overflow-x:auto; margin-top:4%;">
+    </div>
+    <button id="review_button" onclick="location.href=location.origin + '/reservation/write_review'">리뷰하기</button>
   </div>
 
   <script src="/javascripts/jquery-3.2.1.js"></script>
@@ -72,9 +46,9 @@
           jQuery('#margin').css('display', 'block');
       });
     });
-
-  
+    var data = <%-data%>;
   </script>
+  <script src='/javascripts/reserv_list.js'></script>
 </body>
 
 </html>
