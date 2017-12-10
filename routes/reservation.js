@@ -54,7 +54,7 @@ router.post('/add_reservation', function (req, res) {
     body.result = true;
     body.data = rows;
 
-    res.json(body.result);
+    res.json(body);
 });
 
 
