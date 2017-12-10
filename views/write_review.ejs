@@ -10,6 +10,15 @@
   <title>공알이</title>
 
   <script src="/javascripts/review.js"> </script>
+
+  <script> 
+     window.onload = function () {
+            var temp = "<p>" + sessionStorage.getItem('fac_name') + "</p>";
+      
+            document.getElementById("info_container").innerHTML = temp;
+        };
+  </script> 
+
 </head>
 
 <body>
@@ -20,9 +29,8 @@
     </div>
     <br>
     <p id='username'><span style="color:brown; font-weight:700; font-size:14px;"><%-username%></span>님</p>
-    <br> 공공시설명 들어갈 곳
-    <br>
-    <br>
+    <div id='info_container'></div>
+    
     <textarea id="textArea"  rows="20" cols="35" >
         
      </textarea>
@@ -30,11 +38,11 @@
      <br> 평점을 매겨주세요.
 
      <select id = "grade">
-        <option>1점</option>
-        <option>2점</option>
-        <option selected="selected" >3점</option>
-        <option>4점</option>
-        <option>5점</option>
+        <option>1</option>
+        <option>2</option>
+        <option selected="selected" >3</option>
+        <option>4</option>
+        <option>5</option>
 
     </select>
 

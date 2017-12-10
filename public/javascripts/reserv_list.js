@@ -1,5 +1,17 @@
+
 window.onload = function () {
     writeTable(data);
+}
+
+function each_review(k){
+    
+    sessionStorage.setItem('fac_id', data[k].FID);
+    sessionStorage.setItem('fac_name', data[k].Fname);
+    
+    console.log("sdaf");
+
+    location.href= location.origin + '/reservation/write_review';
+
 }
 
 function writeTable(data) {
@@ -19,9 +31,10 @@ function writeTable(data) {
         table += "<td>" + data[i].reservation_date + "일</td>\n"
         table += "<td>" + data[i].start_reservation_time + "시</td>\n"
         table += "<td>" + data[i].end_reservation_time + "시</td>\n"
-        table += "<td><img src=\"/images/review.png\" onclick=\"location.href=location.origin + \'/reservation/write_review\'\"></td>"
+        table += "<td><img src=\"/images/review.png\" onclick=\"each_review(" + i + ");\"></td>"
         table += "</tr>\n"
     }
     table += "</table>"
     document.getElementById('reservation_list').innerHTML = table;
 }
+
