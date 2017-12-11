@@ -83,7 +83,7 @@ var print_review = function (res) {
     var length = res.length;
     var temp = "";
     var districts = "<table class='info_table'>";
-    districts += "<tr><th>ID</th><th>내용</th><th>평점</th><th>작성일</th>자세히<th></th></tr>"
+    districts += "<tr><th>ID</th><th>내용</th><th>평점</th><th>작성일</th><th>자세히</th></tr>"
     for(i = 0 ; i < length; i++)
     {
         for(j = 0; j < 15; j++) temp[j] = res[i].contents[j];
