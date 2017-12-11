@@ -8,23 +8,82 @@
   <link rel="stylesheet" href="stylesheets/common.css">
   <link rel="stylesheet" href="stylesheets/main_menu_button.css">
   <title>공알이</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {
+      packages: ["corechart"]
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Menu');
+      data.addColumn('number', 'Amount given');
+      data.addColumn({
+        type: 'string',
+        role: 'tooltip'
+      });
+      data.addRows([
+        ['개인정보수정', 1, '개인정보를 수정할 수 있습니다.'],
+        ['공공시설예약', 1, '위치기반 또는 키워드기반으로 공공시설을 예약할 수 있습니다.'],
+        ['예약내역', 1, '예약내역을 확인할 수 있습니다.']
+      ]);
+
+      var options = {
+        legend: 'none',
+        pieStartAngle: 100,
+        pieSliceText: 'label',
+        tooltip: {
+          text: 'none',
+          textStyle:{
+            fontSize: 12
+          }
+        },
+        backgroundColor: 'none',
+        chartArea: {
+          width: '90%',
+          height: '90%'
+        },
+        colors: ['grey', 'red', 'black'],
+        fontSize:15,
+        fontName:'Jeju Gothic'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      google.visualization.events.addListener(chart, 'select', selectHandler);
+
+      function selectHandler() {
+        selection = chart.getSelection();
+        switch (selection[0].row) {
+          case 0: // 개인정보수정 부분
+            location.href = location.origin + '/info';
+            break;
+          case 1: // 공공시설예약 부분
+            location.href = location.origin + '/search';
+            break;
+          case 2: // 예약내역 부분
+            location.href = location.origin + '/reservation/list';
+            break;
+        }
+      }
+
+      chart.draw(data, options);
+    }
+  </script>
 </head>
 
 <body>
   <div class='main_container'>
     <img src="/images/logo.png" alt="gongali_logo.png" style='margin:10% auto 5% auto;' id='logo'>
-    <p id='username'><span style="color:brown; font-weight:700; font-size:14px;"><%-username%></span>님, 안녕하세요.</p>
-    <table class='menu_button_table'>
-      <tr>
-        <td><button class='menu_button_design' onclick="location.href=location.origin + '/search'" style="margin-bottom:5%; margin-left: 10%;">공공시설 조회</button></td>
-        <td><button class='menu_button_design' onclick="location.href=location.origin + '/reservation/list'" style="margin-bottom:5%; margin-right: 10%;">예약내역</button></td>
-      </tr>
-      <tr>
-        <td><button class='menu_button_design' onclick="location.href=location.origin + '/review'" style="margin-left: 10%;">공공시설 리뷰</button></td>
-        <td><button class='menu_button_design' onclick="location.href=location.origin + '/info'" style="margin-right: 10%;">개인정보 수정</button></td>
-       </tr>
-    </table>
-    <a href="/logout"><img src="images/logout_button.png" id="btn_logout"></a>
+    <p id='username'>
+      <span style="color:brown; font-weight:700; font-size:14px;">
+        <%-username%>
+      </span>님, 안녕하세요.</p>
+    <div id="piechart" style="width: 360px; height: 400px;"></div>
+    <a href="/logout" style="top: 92%; position: absolute; text-decoration: none;">
+      <img src="images/logout_button.png" id="btn_logout">
+    </a>
   </div>
 
 </body>
