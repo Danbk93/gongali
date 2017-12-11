@@ -10,11 +10,18 @@
     <script>
     window.onload = function () {
             var temp = "<p>공공 시설명: " + data.Fname + "</p>";
-            temp += "<p>선택한 날짜: " + sessionStorage.getItem('selectedDate'); + "</p>"; 
+            var weektype = "평일";
+            var resDate = sessionStorage.getItem('selectedDate');
+            temp += "<p>선택한 날짜: " + resDate + "</p>"; 
             temp += "<p>시간 선택</p>"
             document.getElementById("info_container").innerHTML = temp;
-            setTimerange('주말');
-            //sessionStorage.getItem('selectedDate').weektype
+            var year = (resDate / 10000);
+            var month = (resDate / 100) % 100;
+            var day = resDate % 100;
+            var scr = day + '/' + month + '/' + year;
+            var d = new Date(scr).getDay();
+            if(d == 0||d == 6) weektype = "주말";
+            setTimerange(weektype);
         };
     </script>
 </head>
