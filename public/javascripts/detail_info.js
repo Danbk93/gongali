@@ -82,15 +82,15 @@ var print_review = function (res) {
     var length = res.length;
     var temp = "";
     var districts = "<table class='info_table'>";
-    districts += "<tr><th>ID</th><th>내용</th><th>평점</th><th>작성일</th><th>자세히</th></tr>"
+    districts += "<tr><th style='width:85px;'>아이디</th><th>평점</th><th>작성일</th><th>내용<br>보기</th></tr>"
     for(i = 0 ; i < length; i++)
     {
-        for(j = 0; j < 15; j++) temp[j] = res[i].contents[j];
-        districts += "<tr><td>" + res[i].user_id + "</td>" + "<td>" + temp + 
-        "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +
+        temp = res[i].registration_date;
+        temp = temp.substring(0,10) + ' ' + temp.substring(11,16);
+        districts += "<tr><td>" + res[i].user_id + "</td><td>"+ res[i].grade +"</td><td>"+ temp +
          "</td><td class='review_td'><input type='button' value='보기' onclick='show_review(this);'></input></td></tr>";
-        districts += "<tr class='collapse'><td>" + res[i].user_id + "</td>" + "<td>" + res[i].contents + 
-        "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +"</td><td></td></tr>";
+        districts += "<tr class='collapse'><td colspan='4' class='contents'>" + res[i].contents + 
+        "</td></tr>";
     }
     districts += "</table>";
     document.getElementById("review").innerHTML = districts;

@@ -44,7 +44,7 @@ select {
 .result_design {
     margin-top: 3%;
     overflow: auto;
-    height: 370px;
+    height: 380px;
 }
 
 .result_list_table {

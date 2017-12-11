@@ -1,10 +1,23 @@
-  .info_design{
-      margin-top: 5%;
-      overflow: auto;
-      height: 500px;
-  }
+.info_design {
+    margin-top: 3%;
+    overflow: auto;
+    height: 300px;
+}
 
-  .info_table {
+#review{
+    margin-top: 3%;
+    height: 215px;
+    overflow: auto;
+}
+
+#review .info_table th,
+#review .info_table td{
+    text-align: center;
+    padding: 0;
+    padding: 5px 0;
+}
+
+.info_table {
     margin-top: 2%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -15,7 +28,8 @@
     margin-right: auto;
 }
 
-.info_table th, td {
+.info_table th,
+td {
     text-align: left;
     padding: 8px;
     word-break: break-all;
@@ -25,23 +39,16 @@
     background-color: rgba(217, 223, 235, 0.87);
 }
 
-.info_table tr{
+.info_table tr {
     border: 1px solid rgba(165, 171, 172, 0.856);
 }
 
-.resv_button{
+.resv_button {
     width: 70px;
     height: 30px;
     position: absolute;
     right: 15px;
     top: 12px;
-}
-
-.review_td{
-    padding: 0;
-}
-
-.review_td input{
     border-radius: 6px;
     border: none;
     background-color: rgb(192, 57, 43);
@@ -49,11 +56,33 @@
     color: rgb(255, 255, 255);
     text-align: center;
     padding: 0px;
-    font-size:12px;
+    font-size: 12px;
+}
+
+.review_td {
+    padding: 0;
+}
+
+.review_td input {
+    border-radius: 6px;
+    border: none;
+    background-color: rgb(192, 57, 43);
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 0px;
+    font-size: 12px;
     width: 40px;
     height: 20px;
 }
 
-.review_td input:hover{
+.review_td input:hover {
     background: rgb(27, 24, 46);
+}
+
+.contents {
+    text-align: left !important;
+    padding-left: 10px !important; 
+    background: cadetblue;
+    color: black;
 }
