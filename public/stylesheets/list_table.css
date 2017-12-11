@@ -49,3 +49,16 @@
 .review_td input:hover{
     background: rgb(27, 24, 46);
 }
+
+.written_review_td input{
+    border-radius: 6px;
+    border: none;
+    background-color: rgb(27, 24, 46);
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 0px;
+    font-size:12px;
+    width: 40px;
+    height: 20px;
+}

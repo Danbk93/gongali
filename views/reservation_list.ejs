@@ -16,7 +16,6 @@
     <div class='header'>
       <button class='back_button_design' onclick="location.href=location.origin + '/main'"></button>
       공공시설 예약내역
-      <div id="search_img"></div>
       <div id="search_tb">
         <input type="text" name="search" placeholder="내용을 입력해주세요.">
       </div>
@@ -28,23 +27,12 @@
         <%-username%>
       </span>님의 예약 내역
     </p>
-    <div id='reservation_list' style="overflow-x:auto; margin-top:4%;">
+    <div id='reservation_list' style="overflow-x:auto; margin-top:4%; height: 490px;">
     </div>
   </div>
 
   <script src="/javascripts/jquery-3.2.1.js"></script>
   <script>
-    jQuery(document).ready(function () {
-      jQuery("#search_img").click(function () {
-        jQuery("#search_tb").animate({
-          width: 'toggle'
-        }, "1000");
-        if (jQuery('#margin').css('display') == 'block')
-          jQuery('#margin').css('display', 'none');
-        else
-          jQuery('#margin').css('display', 'block');
-      });
-    });
     var data = <%-data%>;
   </script>
   <script src='/javascripts/reserv_list.js'></script>

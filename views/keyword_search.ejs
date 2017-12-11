@@ -34,7 +34,12 @@
             var zones = "";
             var data = Object.keys(zoneDistrict); // get keys from zoneDistrict object
             for (i = 0; i < data.length; i++) {
-                zones += "<option>" + data[i] + "</option>";
+                zones += "<option"
+                if (i == 0) {
+                    zones += " selected"
+                }
+
+                zones += ">" + data[i] + "</option>";
             }
             document.getElementById("zone").innerHTML = zones;
         }
@@ -43,7 +48,11 @@
             var districts = "";
             var data = zoneDistrict[zone];
             for (i = 0; i < data.length; i++) {
-                districts += "<option>" + data[i] + "</option>";
+                districts += "<option"
+                if (i == 0) {
+                    districts += " selected"
+                }
+                districts += ">" + data[i] + "</option>";
             }
             document.getElementById("district").innerHTML = districts;
         }
@@ -66,7 +75,7 @@
                 <option>시/도 선택</option>
             </select>
             <select id="district">
-                <option>시/구 선택</option>
+                <option selected>시/구 선택</option>
             </select>
         </div>
         <div class='keyword_search'>

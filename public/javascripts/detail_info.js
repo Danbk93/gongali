@@ -29,7 +29,7 @@ var get_info = function () {
     httpRequest.send(JSON.stringify(result));
 }
 
-var get_review = function(fid) {
+var get_review = function (fid) {
     var result = new Object();
     result.FID = fid;
 
@@ -64,12 +64,20 @@ var print_result = function (res) {
     districts += "<tr><td>시설 유형 </td>" + "<td>" + res.facility_type + "</td></tr>";
     districts += "<tr><td>위치 </td>" + "<td>" + res.Paddress + "</td></tr>";
     districts += "<tr><td>휴관일 </td>" + "<td>" + close_day + "</td></tr>";
-    districts += "<tr><td>평일 운영 시간 </td>" + "<td>" + res.opentime_weekday.substring(0,5) + " ~ " + res.closetime_weekday.substring(0,5) + "</td></tr>";
-    districts += "<tr><td>주말 운영 시간 </td>" + "<td>" + res.opentime_weekend.substring(0,5) + " ~ " + res.closetime_weekend.substring(0,5) + "</td></tr>";
-    if (res.charged == 'Y'){ districts += "<tr><td>시간당 요금 </td>" + "<td>" + res.base_charge_fee / res.base_usage_time + "원</td></tr>"}
-    if (res.over_usage_time){ districts += "<tr><td>시간당 초과요금 </td>" + "<td>" + res.over_charge_fee + "원</td></tr>"}
-    if (res.available_number != "정보 없음"){ districts += "<tr><td>수용 가능 인원 </td>" + "<td>" + res.available_number + "</td></tr>"}
-    if (res.other_info != "정보 없음"){ districts += "<tr><td>기타 시설 정보 </td>" + "<td>" + res.other_info + "</td></tr>"}
+    districts += "<tr><td>평일 운영 시간 </td>" + "<td>" + res.opentime_weekday.substring(0, 5) + " ~ " + res.closetime_weekday.substring(0, 5) + "</td></tr>";
+    districts += "<tr><td>주말 운영 시간 </td>" + "<td>" + res.opentime_weekend.substring(0, 5) + " ~ " + res.closetime_weekend.substring(0, 5) + "</td></tr>";
+    if (res.charged == 'Y') {
+        districts += "<tr><td>시간당 요금 </td>" + "<td>" + res.base_charge_fee / res.base_usage_time + "원</td></tr>"
+    }
+    if (res.over_usage_time) {
+        districts += "<tr><td>시간당 초과요금 </td>" + "<td>" + res.over_charge_fee + "원</td></tr>"
+    }
+    if (res.available_number != "정보 없음") {
+        districts += "<tr><td>수용 가능 인원 </td>" + "<td>" + res.available_number + "</td></tr>"
+    }
+    if (res.other_info != "정보 없음") {
+        districts += "<tr><td>기타 시설 정보 </td>" + "<td>" + res.other_info + "</td></tr>"
+    }
     districts += "<tr><td>관리 기관명 </td>" + "<td>" + res.manage_agency + "</td></tr>"
     districts += "<tr><td>관리 부서 </td>" + "<td>" + res.department + "</td></tr>"
     districts += "<tr><td>전화 번호 </td>" + "<td>" + res.phone_number + "</td></tr>"
@@ -83,23 +91,26 @@ var print_review = function (res) {
     var temp = "";
     var districts = "<table class='info_table'>";
     districts += "<tr><th style='width:85px;'>아이디</th><th>평점</th><th>작성일</th><th>내용<br>보기</th></tr>"
-    for(i = 0 ; i < length; i++)
-    {
-        temp = res[i].registration_date;
-        temp = temp.substring(0,10) + ' ' + temp.substring(11,16);
-        districts += "<tr><td>" + res[i].user_id + "</td><td>"+ res[i].grade +"</td><td>"+ temp +
-         "</td><td class='review_td'><input type='button' value='보기' onclick='show_review(this);'></input></td></tr>";
-        districts += "<tr class='collapse'><td colspan='4' class='contents'>" + res[i].contents + 
-        "</td></tr>";
+
+    if (length == 0) {
+        districts += "<tr><td colspan='4'>리뷰가 없습니다.<br>리뷰를 남긴 첫 사용자가 되어봐요!</td></tr>"
+    } else {
+        for (i = 0; i < length; i++) {
+            temp = res[i].registration_date;
+            temp = temp.substring(0, 10) + ' ' + temp.substring(11, 16);
+            districts += "<tr><td>" + res[i].user_id + "</td><td>" + res[i].grade + "</td><td>" + temp +
+                "</td><td class='review_td'><input type='button' value='보기' onclick='show_review(this);'></input></td></tr>";
+            districts += "<tr class='collapse'><td colspan='4' class='contents'>" + res[i].contents +
+                "</td></tr>";
+        }
     }
     districts += "</table>";
     document.getElementById("review").innerHTML = districts;
 }
 
-var show_review = function(cur){
+var show_review = function (cur) {
     var node = cur.parentNode.parentNode.nextSibling;
-    if(node.getAttribute("class") == "collapse.in") 
-    {
+    if (node.getAttribute("class") == "collapse.in") {
         node.setAttribute("class", "collapse");
         return;
     }
@@ -118,7 +129,7 @@ var print_closedDate = function (bn) {
     var day = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
     var isclose = [0, 0, 0, 0, 0, 0, 0];
     var isNoClose = 1;
-    
+
     for (i = 0; i < 7; i++) {
         if (bn[i] == 1) {
             isclose[i] = 1;
@@ -129,7 +140,7 @@ var print_closedDate = function (bn) {
     if (isNoClose) {
         result += "없음";
     } else {
-        for (j = 0; j <  7; j++) {
+        for (j = 0; j < 7; j++) {
             if (isclose[j])
                 result += day[j] + " ";
         }
