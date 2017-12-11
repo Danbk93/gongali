@@ -18,7 +18,7 @@ var get_info = function () {
             var res = JSON.parse(httpRequest.responseText);
             if (res.result == true) {
                 print_result(res.data[0]);
-                get_reivew(res.data[0].FID);
+                get_review(res.data[0].FID);
             } else {
                 alert('실패');
             }
@@ -29,7 +29,7 @@ var get_info = function () {
     httpRequest.send(JSON.stringify(result));
 }
 
-var get_review = function (fid) {
+var get_review = function(fid) {
     var result = new Object();
     result.FID = fid;
 
@@ -49,7 +49,7 @@ var get_review = function (fid) {
             }
         }
     };
-    httpRequest.open('POST', location.origin + '/search/search_more_info', true);
+    httpRequest.open('POST', location.origin + '/review/show_review', true);
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(result));
 }
@@ -83,18 +83,28 @@ var print_review = function (res) {
     var length = res.length;
     var temp = "";
     var districts = "<table class='info_table'>";
-    districts += "<tr><th>ID</th><th>내용</th><th>평점</th><th>작성일</th><th></th>자세히</tr>"
+    districts += "<tr><th>ID</th><th>내용</th><th>평점</th><th>작성일</th>자세히<th></th></tr>"
     for(i = 0 ; i < length; i++)
     {
         for(j = 0; j < 15; j++) temp[j] = res[i].contents[j];
-        districts += "<tr class='collapse'><td>" + res[i].user_id + "</td>" + "<td>" + temp + 
+        districts += "<tr><td>" + res[i].user_id + "</td>" + "<td>" + temp + 
         "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +
-         "</td><td class='review_td'><input type='button' value='보기' onclick='show_review();'></input></td></tr>";
-        districts += "<tr class='collapse.in'><td>" + res[i].user_id + "</td>" + "<td>" + res[i].contents + 
+         "</td><td class='review_td'><input type='button' value='보기' onclick='show_review(this);'></input></td></tr>";
+        districts += "<tr class='collapse'><td>" + res[i].user_id + "</td>" + "<td>" + res[i].contents + 
         "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +"</td><td></td></tr>";
     }
     districts += "</table>";
     document.getElementById("review").innerHTML = districts;
+}
+
+var show_review = function(cur){
+    var node = cur.parentNode.parentNode.nextSibling;
+    if(node.getAttribute('collapse.in') == 'collapse.in') 
+    {
+        node.setAttribute('collapse.in', 'collapse');
+        return;
+    }
+    node.setAttribute('collapse', 'collapse.in');
 }
 
 var goHomepage = function (homepage_url) {
