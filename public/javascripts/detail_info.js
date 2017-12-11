@@ -89,7 +89,7 @@ var print_review = function (res) {
         for(j = 0; j < 15; j++) temp[j] = res[i].contents[j];
         districts += "<tr class='collapse'><td>" + res[i].user_id + "</td>" + "<td>" + temp + 
         "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +
-         "</td><td><img src=\"/images/review.png\" onclick=\"show_detail();\"></td></tr>";
+         "</td><td class='review_td'><input type='button' value='보기' onclick='show_review();'></input></td></tr>";
         districts += "<tr class='collapse.in'><td>" + res[i].user_id + "</td>" + "<td>" + res[i].contents + 
         "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +"</td><td></td></tr>";
     }
