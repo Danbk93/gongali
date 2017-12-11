@@ -12,7 +12,6 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/add_review', function (req, res) {
-    try{
     var result = req.body;
 
 
@@ -30,10 +29,7 @@ router.post('/add_review', function (req, res) {
     body.result = true;
     body.data = rows;
 
-    res.json(body);}
-    catch(error){
-        console.log(error.stack)
-    }
+    res.json(body);
 });
 
 
