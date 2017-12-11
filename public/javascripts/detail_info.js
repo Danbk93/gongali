@@ -99,12 +99,12 @@ var print_review = function (res) {
 
 var show_review = function(cur){
     var node = cur.parentNode.parentNode.nextSibling;
-    if(node.getAttribute('collapse.in') == 'collapse.in') 
+    if(node.getAttribute("class") == "collapse.in") 
     {
-        node.setAttribute('collapse.in', 'collapse');
+        node.setAttribute("class", "collapse");
         return;
     }
-    node.setAttribute('collapse', 'collapse.in');
+    node.setAttribute("class", "collapse.in");
 }
 
 var goHomepage = function (homepage_url) {
