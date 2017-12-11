@@ -18,8 +18,34 @@ var get_info = function () {
             var res = JSON.parse(httpRequest.responseText);
             if (res.result == true) {
                 print_result(res.data[0]);
+                get_reivew(res.data[0].FID);
             } else {
                 alert('실패');
+            }
+        }
+    };
+    httpRequest.open('POST', location.origin + '/search/search_more_info', true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    httpRequest.send(JSON.stringify(result));
+}
+
+var get_review = function (fid) {
+    var result = new Object();
+    result.FID = fid;
+
+    var httpRequest;
+    if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
+        httpRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE 8 이상
+        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            var res = JSON.parse(httpRequest.responseText);
+            if (res.result == true) {
+                print_review(res.data);
+            } else {
+                alert('리뷰 불러오기 실패');
             }
         }
     };
@@ -38,7 +64,7 @@ var print_result = function (res) {
     districts += "<tr><td>시설 유형: </td>" + "<td>" + res.facility_type + "</td></tr>";
     districts += "<tr><td>위치: </td>" + "<td>" + res.Paddress + "</td></tr>";
     districts += "<tr><td>휴관일: </td>" + "<td>" + close_day + "</td></tr>";
-    districts += "<tr><td>평일 운영 시간: </td>" + "<td>" + res.opentime_weekday + " ~ " + res.closetime_weekday + "<td></tr>";
+    districts += "<tr><td>평일 운영 시간: </td>" + "<td>" + res.opentime_weekday + " ~ " + res.closetime_weekday + "</td></tr>";
     districts += "<tr><td>주말 운영 시간: </td>" + "<td>" + res.opentime_weekend + " ~ " + res.closetime_weekend + "</td></tr>";
     if (res.charged == 'Y') districts += "<tr><td>시간당 요금: </td>" + "<td>" + res.base_charge_fee / res.base_usage_time + "원</td></tr>"
     if (res.over_usage_time) districts += "<tr><td>시간당 초과요금: </td>" + "<td>" + res.over_charge_fee + "원</td></tr>"
@@ -50,6 +76,25 @@ var print_result = function (res) {
     districts += "<tr><td>홈페이지: </td>" + "<td><a href=javascript:goHomepage(`" + res.homepage + "`);>" + res.homepage + "</a></td></tr>"
     districts += "</table>";
     document.getElementById("info_detail").innerHTML = districts;
+}
+
+var print_review = function (res) {
+    sessionStorage.setItem('data', JSON.stringify(res));
+    var length = res.length;
+    var temp = "";
+    var districts = "<table class='info_table'>";
+    districts += "<tr><th>ID</th><th>내용</th><th>평점</th><th>작성일</th><th></th>자세히</tr>"
+    for(i = 0 ; i < length; i++)
+    {
+        for(j = 0; j < 15; j++) temp[j] = res[i].contents[j];
+        districts += "<tr class='collapse'><td>" + res[i].user_id + "</td>" + "<td>" + temp + 
+        "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +
+         "</td><td><img src=\"/images/review.png\" onclick=\"show_detail();\"></td></tr>";
+        districts += "<tr class='collapse.in'><td>" + res[i].user_id + "</td>" + "<td>" + res[i].contents + 
+        "</td><td>"+ res[i].grade +"점</td><td>"+ res[i].registration_date +"</td><td></td></tr>";
+    }
+    districts += "</table>";
+    document.getElementById("review").innerHTML = districts;
 }
 
 var goHomepage = function (homepage_url) {
@@ -82,7 +127,6 @@ var print_closedDate = function (bn) {
     return result;
 }
 
-//이부분 수정필요
 function make_reservation() {
     window.open('/reservation?page=1', '예약',
         'width=450, height=350, menubar=no, status=no, toolbar=no, location=no, scrollbars=no, resizable=no, fullscreen=no, left=550, top=150'
