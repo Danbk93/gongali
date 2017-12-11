@@ -79,7 +79,6 @@ var print_result = function (res) {
 }
 
 var print_review = function (res) {
-    sessionStorage.setItem('data', JSON.stringify(res));
     var length = res.length;
     var temp = "";
     var districts = "<table class='info_table'>";
