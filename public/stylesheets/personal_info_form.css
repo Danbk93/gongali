@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 .personal_info_form {
   margin-top: 10%;
 }
@@ -5,6 +7,7 @@
 .personal_info_form table {
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Jeju Gothic', serif;
 }
 
 .personal_info_form table td {
@@ -14,7 +17,6 @@
 .personal_info_form label {
   font-size: 22px;
   font-weight: 700;
-  font-family: Arial, serif;
 }
 
 .personal_info_form .textfield {
@@ -73,7 +75,7 @@
 }
 
 .info_type{
-  width: 100px;
+  width: 110px;
   margin: 10px 0;
   margin-left: 10px;
   padding: 2px 10px;

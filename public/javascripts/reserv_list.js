@@ -17,7 +17,7 @@ function each_review(k){
 function writeTable(data) {
     var table = "<table class='reservation_list_table'>\n"
     table += "<tr>\n\
-                <th>예약번호</th>\n\
+                <th>예약<br>번호</th>\n\
                 <th>공공시설명</th>\n\
                 <th>대관일</th>\n\
                 <th>대관시작</th>\n\
@@ -28,7 +28,7 @@ function writeTable(data) {
         table += "<tr>\n"
         table += "<td>" + data[i].reservation_number +"</td>\n"
         table += "<td>" + data[i].Fname + "</td>\n"
-        table += "<td>" + data[i].reservation_date + "일</td>\n"
+        table += "<td>" + data[i].reservation_date + "</td>\n"
         table += "<td>" + data[i].start_reservation_time + "시</td>\n"
         table += "<td>" + data[i].end_reservation_time + "시</td>\n"
         table += "<td><img src=\"/images/review.png\" onclick=\"each_review(" + i + ");\"></td>"

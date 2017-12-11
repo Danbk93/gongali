@@ -7,18 +7,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/stylesheets/common.css">
   <link rel="stylesheet" href="/stylesheets/header.css">
+  <link rel="stylesheet" href="/stylesheets/review.css">
   <title>공알이</title>
 
-  <script src="/javascripts/review.js"> </script>
+  <script src="/javascripts/review.js"></script>
 
-  <script> 
-     window.onload = function () {
-            var temp = "<p>" + sessionStorage.getItem('fac_name') + "</p>";
-      
-            document.getElementById("info_container").innerHTML = temp;
-        };
-  </script> 
-
+  <script>
+    window.onload = function () {
+      var temp = sessionStorage.getItem('fac_name');
+      document.getElementById("info_container").innerHTML = temp;
+      document.getElementById("textArea").value = '';
+    };
+  </script>
 </head>
 
 <body>
@@ -27,30 +27,43 @@
       <button class='back_button_design' onclick="location.href=location.origin + '/reservation/list'"></button>
       공공시설 리뷰 작성
     </div>
-    <br>
-    <p id='username'><span style="color:brown; font-weight:700; font-size:14px;"><%-username%></span>님</p>
-    <div id='info_container'></div>
-    
-    <textarea id="textArea"  rows="20" cols="35" >
-        
-     </textarea>
-     <br>
-     <br> 평점을 매겨주세요.
+    <table>
+      <tr>
+        <th>공공시설명
+        </th>
+        <td id='info_container'>
+        </td>
+      </tr>
+      <tr>
+        <th>작성자</th>
+        <td>
+          <%-username%>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class='no_padding_td' style="height: 370px;">
+          <textarea id="textArea" placeholder="리뷰내용입력">
 
-     <select id = "grade">
-        <option>1</option>
-        <option>2</option>
-        <option selected="selected" >3</option>
-        <option>4</option>
-        <option>5</option>
-
-    </select>
-
-    <br>
-     <br>
-     <button id="complete_button" onclick="save_review();">작성 완료</button>
-     <button id="close_button" onclick="location.href=location.origin + '/reservation/list'">작성 취소</button>
-
+          </textarea>
+        </td>
+      </tr>
+      <tr>
+        <th>평점</th>
+        <td class='no_padding_td' style="height: 21.2px;">
+          <select id="grade">
+            <option>1</option>
+            <option>2</option>
+            <option selected="selected">3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <div style="margin-top:5%;" class='button_group'>
+      <input id="close_button" onclick="cancel();" value='작성 취소'>
+      <input id="complete_button" onclick="save_review();" value='작성 완료'>
+    </div>
   </div>
 
 </body>

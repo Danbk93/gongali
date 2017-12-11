@@ -1,14 +1,15 @@
 function save_review(){
+    var contents = document.getElementById('textArea').value;
+    if(contents.length < 10){
+        alert('리뷰를 10자 이상 입력해주세요.');
+        return;
+    }
 
-  
-    date = new Date(); 
-  
     var result = new Object();
 
     result.FID = sessionStorage.getItem('fac_id');
-    result.contents = document.getElementById('textArea').value;
+    result.contents = contents;
     result.grade = parseInt(document.getElementById('grade').value);
-    result.registration_date = date;
 
     var httpRequest;
     if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
@@ -31,4 +32,10 @@ function save_review(){
     httpRequest.send(JSON.stringify(result));
 
     location.href= location.origin + '/reservation/list';
+}
+
+function cancel(){
+    if(confirm('리뷰 작성을 취소하시겠습니까?') == true){
+        location.href = location.origin + '/reservation/list';
+    } 
 }

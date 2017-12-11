@@ -16,12 +16,11 @@ router.post('/add_review', function (req, res) {
 
 
    var uid = req.session.uid;
-   var fid = result.FID 
-   var con = result.contents
-   var gra = result.grade 
-   var reg_date = result.registration_date
+   var fid = result.FID;
+   var con = result.contents;
+   var gra = result.grade;
 
-    var rows = db.query("INSERT INTO REVIEW ( user_id, FID, contents, grade, registration_date )VALUES(\"" + uid + " \", " + fid + ", \"" + con + "\", " + gra + ", \"" + reg_date + "\")");
+    var rows = db.query("INSERT INTO REVIEW ( user_id, FID, contents, grade, registration_date )VALUES(\"" + uid + " \", " + fid + ", \"" + con + "\", " + gra + ", NOW())");
 
     var body = new Object();
     body.result = true;
