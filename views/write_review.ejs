@@ -17,6 +17,7 @@
       var temp = sessionStorage.getItem('fac_name');
       document.getElementById("info_container").innerHTML = temp;
       document.getElementById("textArea").value = '';
+      document.getElementById('textArea').setAttribute('onkeyup', 'checkLength()');
     };
   </script>
 </head>
@@ -61,8 +62,8 @@
       </tr>
     </table>
     <div style="margin-top:5%;" class='button_group'>
-      <input id="close_button" onclick="cancel();" value='작성 취소'>
-      <input id="complete_button" onclick="save_review();" value='작성 완료'>
+      <input type='button' id="close_button" onclick="cancel();" value='작성 취소'>
+      <input type='button' id="complete_button" onclick="save_review();" value='작성 완료'>
     </div>
   </div>
 

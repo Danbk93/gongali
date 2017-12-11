@@ -25,10 +25,13 @@ function writeTable(data) {
                 <th>리뷰</th>\n\
               </tr>\n"
     for (var i = 0; i < data.length; i++) {
+        var reserv_date = data[i].reservation_date.toString(10);
+        reserv_date = reserv_date.substring(0, 4) + '&#45;' + reserv_date.substring(4,6) + '&#45;' + reserv_date.substring(6);
+
         table += "<tr>\n"
         table += "<td>" + data[i].reservation_number +"</td>\n"
         table += "<td>" + data[i].Fname + "</td>\n"
-        table += "<td>" + data[i].reservation_date + "</td>\n"
+        table += "<td>" + reserv_date + "</td>\n"
         table += "<td>" + data[i].start_reservation_time + "시</td>\n"
         table += "<td>" + data[i].end_reservation_time + "시</td>\n"
         table += "<td><img src=\"/images/review.png\" onclick=\"each_review(" + i + ");\"></td>"

@@ -39,3 +39,11 @@ function cancel(){
         location.href = location.origin + '/reservation/list';
     } 
 }
+
+function checkLength(){
+    var contents = document.getElementById('textArea');
+    if(contents.value.length > 600){
+        alert('리뷰는 최대 600자까지 작성가능합니다.');
+        contents.value = contents.value.substring(0, 600);
+    }
+}
