@@ -1,6 +1,42 @@
 #map {
-    height: 400px;
-    width: 90%;
+    height: 546px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-   }
+}
+
+.info_div table, td, th, tr{
+    font-size: 12px;
+    padding:5px 0;
+}
+
+.info_div tr{
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.Fname_th,
+.addr_th{
+    background: #f0c971;
+    width: 15%;
+}
+
+.btn_reserv{
+    width:95%;
+    height: 95%;
+    border-radius: 6px;
+    border: none;
+    background-color: rgb(192, 57, 43);
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 0px;
+    font-size:12px;
+}
+
+.btn_reserv_td{
+    padding:0;
+    height:10px;
+    border: none;
+    width:80px;
+}

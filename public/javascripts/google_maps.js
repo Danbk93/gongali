@@ -1,5 +1,8 @@
 function initMap() {
-  var init_pos = { lat: 37.250943, lng: 127.028344 };
+  var init_pos = {
+    lat: 37.250943,
+    lng: 127.028344
+  };
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
     center: init_pos
@@ -43,34 +46,60 @@ function initMap() {
               var infoWindow = new google.maps.InfoWindow();
               for (var i = 0; i < res.data.length; i++) {
 
-                var name = res.data[i].Fname;
-                var address = res.data[i].Paddress;
+                var Fname = res.data[i].Fname;
+                var Paddress = res.data[i].Paddress;
                 var point = {
                   lat: res.data[i].latitude,
                   lng: res.data[i].longitude
                 }
-                
+
                 var marker = new google.maps.Marker({
                   map: map,
                   position: point,
                 });
-                
-                var infowincontent = document.createElement('div');
-                var strong = document.createElement('strong');
-                strong.textContent = name
-                infowincontent.appendChild(strong);
-                infowincontent.appendChild(document.createElement('br'));
-                var text = document.createElement('text');
-                text.textContent = address
-                infowincontent.appendChild(text);
 
+                var infowincontent = document.createElement('div');
+                infowincontent.setAttribute('class','info_div');
+                var table = document.createElement('table');
+                var tr = document.createElement('tr');
+                var td = document.createElement('th');
+                td.setAttribute('class','Fname_th');
+                td.textContent = '공공\n시설명';
+                tr.appendChild(td);                
+                td = document.createElement('td');
+                td.setAttribute('class','Fname');
+                td.textContent = Fname;
+                td.setAttribute('class', 'Fname')
+                tr.appendChild(td);
+                td = document.createElement('td');
+                td.setAttribute('class', 'btn_reserv_td');        
+                var input = document.createElement('input');
+                input.setAttribute('type','button');
+                input.setAttribute('value','자세히&예약');
+                input.setAttribute('onclick', 'alert("예약하기")');
+                input.setAttribute('class', 'btn_reserv');
+                td.appendChild(input);
+                tr.appendChild(td);
+                table.appendChild(tr);
+                tr = document.createElement('tr');
+                td = document.createElement('th');
+                td.setAttribute('class', 'addr_th')                
+                td.textContent = '위치';
+                tr.appendChild(td);
+                td = document.createElement('td');
+                td.setAttribute('class','Paddress');
+                td.textContent = Paddress;
+                td.setAttribute('colspan','3');
+                tr.appendChild(td);
+                table.appendChild(tr);
+                infowincontent.appendChild(table);
                 google.maps.event.addListener(marker, 'click', (function (marker, infowincontent) {
                   return function () {
                     infoWindow.setContent(infowincontent);
                     infoWindow.open(map, marker);
                   }
                 })(marker, infowincontent));
-                
+
               }
             } else {
               alert('error');

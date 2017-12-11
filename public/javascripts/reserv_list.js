@@ -5,7 +5,6 @@ window.onload = function () {
 function each_review(k){
     sessionStorage.setItem('fac_id', data[k].FID);
     sessionStorage.setItem('fac_name', data[k].Fname);
-<<<<<<< HEAD
     sessionStorage.setItem('rev_write',data[k].review_written);
     sessionStorage.setItem('res_num',data[k].reservation_number);
 
@@ -18,10 +17,6 @@ function each_review(k){
         alert("이미 리뷰가 작성되어 있습니다.");
     }
 
-=======
-
-    location.href= location.origin + '/reservation/write_review';
->>>>>>> 041caef15ac733bc5d607d7ead1caac7ef86c80b
 }
 
 function writeTable(data) {
