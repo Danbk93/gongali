@@ -12,6 +12,7 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/add_review', function (req, res) {
+    try{
     var result = req.body;
 
 
@@ -19,14 +20,20 @@ router.post('/add_review', function (req, res) {
    var fid = result.FID;
    var con = result.contents;
    var gra = result.grade;
+   var res_num = result.res_num;
 
     var rows = db.query("INSERT INTO REVIEW ( user_id, FID, contents, grade, registration_date )VALUES(\"" + uid + " \", " + fid + ", \"" + con + "\", " + gra + ", NOW())");
+    
+    var res_update = db.query("UPDATE RESERVATION SET review_written = 1 WHERE reservation_number = " + res_num);
 
     var body = new Object();
     body.result = true;
     body.data = rows;
 
-    res.json(body);
+    res.json(body);}
+    catch(error){
+        console.log(error.stack)
+    }
 });
 
 

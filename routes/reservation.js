@@ -8,7 +8,7 @@ router.get('/list', function (req, res, next) {
         res.send('<script>alert("로그인 세션이 만료되었습니다. 로그인 화면으로 이동합니다."); location.replace(location.origin);</script>');
         return;
     }
-    var rows = db.query('SELECT RESERVATION.FID, reservation_number, Fname, start_reservation_time, end_reservation_time, reservation_date FROM RESERVATION, PUBLIC_FACILITIES WHERE RESERVATION.FID = PUBLIC_FACILITIES.FID AND user_id = \'' + req.session.uid + '\' ORDER BY reservation_date, start_reservation_time asc')
+    var rows = db.query('SELECT RESERVATION.FID, reservation_number, Fname, start_reservation_time, end_reservation_time, reservation_date, review_written FROM RESERVATION, PUBLIC_FACILITIES WHERE RESERVATION.FID = PUBLIC_FACILITIES.FID AND user_id = \'' + req.session.uid + '\' ORDER BY reservation_date, start_reservation_time asc')
     res.render('reservation_list', {
         "username": req.session.uid,
         "data":JSON.stringify(rows)
@@ -48,7 +48,7 @@ router.post('/add_reservation', function (req, res) {
     var res_start = result.start_reservation_time;
     var res_end = result.end_reservation_time;
 
-    var rows = db.query("INSERT INTO RESERVATION ( user_id, FID, start_reservation_time, end_reservation_time, reservation_date )VALUES(\"" + id + " \", " + FID + ", " + res_start + ", " + res_end + ", " + res_date + ")");
+    var rows = db.query("INSERT INTO RESERVATION ( user_id, FID, start_reservation_time, end_reservation_time, reservation_date, review_written )VALUES(\"" + id + " \", " + FID + ", " + res_start + ", " + res_end + ", " + res_date + ", 0)");
 
     var body = new Object();
     body.result = true;

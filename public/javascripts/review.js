@@ -10,6 +10,7 @@ function save_review(){
     result.FID = sessionStorage.getItem('fac_id');
     result.contents = contents;
     result.grade = parseInt(document.getElementById('grade').value);
+    result.res_num = parseInt(sessionStorage.getItem('res_num'));
 
     var httpRequest;
     if (window.XMLHttpRequest) { // 모질라, 사파리등 그외 브라우저, ...
@@ -22,6 +23,7 @@ function save_review(){
             var res = JSON.parse(httpRequest.responseText);
             if(res.result == true){
                 alert("작성되었습니다.");
+                location.href= location.origin + '/reservation/list';
             } else{
                 alert('작성 실패하였습니다.');
             }
@@ -30,8 +32,6 @@ function save_review(){
     httpRequest.open('POST', location.origin + '/review/add_review', true);
     httpRequest.setRequestHeader("Content-type", "application/json");
     httpRequest.send(JSON.stringify(result));
-
-    location.href= location.origin + '/reservation/list';
 }
 
 function cancel(){
