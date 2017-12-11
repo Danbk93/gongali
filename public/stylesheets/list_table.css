@@ -12,7 +12,8 @@
 .reservation_list_table th, td,
 .review_list_table th, td{
     text-align: center;
-    padding: 8px;
+    padding: 0;
+    padding: 8px 5px;
 }
 
 .reservation_list_table tr:nth-child(1),
