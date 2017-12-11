@@ -32,6 +32,21 @@ router.post('/add_review', function (req, res) {
     res.json(body);
 });
 
+router.post('/show_review', function (req, res) {
+    var result = req.body;
+
+
+    var fid = result.FID;
+
+    var rows = db.query("SELECT * FROM REVIEW WHERE FID = " + fid);
+    
+    var body = new Object();
+    body.result = true;
+    body.data = rows;
+
+    res.json(body);
+});
+
 
 
 module.exports = router;
