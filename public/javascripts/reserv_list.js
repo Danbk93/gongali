@@ -1,17 +1,12 @@
-
 window.onload = function () {
     writeTable(data);
 }
 
 function each_review(k){
-    
     sessionStorage.setItem('fac_id', data[k].FID);
     sessionStorage.setItem('fac_name', data[k].Fname);
-    
-    console.log("sdaf");
 
     location.href= location.origin + '/reservation/write_review';
-
 }
 
 function writeTable(data) {
@@ -20,9 +15,9 @@ function writeTable(data) {
                 <th>예약<br>번호</th>\n\
                 <th>공공시설명</th>\n\
                 <th>대관일</th>\n\
-                <th>대관시작</th>\n\
-                <th>대관종료</th>\n\
-                <th>리뷰</th>\n\
+                <th>대관<br>시작</th>\n\
+                <th>대관<br>종료</th>\n\
+                <th>리뷰<br>작성</th>\n\
               </tr>\n"
     for (var i = 0; i < data.length; i++) {
         var reserv_date = data[i].reservation_date.toString(10);
@@ -34,7 +29,7 @@ function writeTable(data) {
         table += "<td>" + reserv_date + "</td>\n"
         table += "<td>" + data[i].start_reservation_time + "시</td>\n"
         table += "<td>" + data[i].end_reservation_time + "시</td>\n"
-        table += "<td><img src=\"/images/review.png\" onclick=\"each_review(" + i + ");\"></td>"
+        table += "<td class='review_td'><input type='button' value='작성' onclick=\"each_review(" + i + ");\"></input></td>"
         table += "</tr>\n"
     }
     table += "</table>"
